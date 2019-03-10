@@ -32,7 +32,7 @@ function save(e, cb) {
     // password: e.password,
   });
   obj.save((err, user) => {
-    cb(user._doc._id)
+    cb(user._doc._id);
   });
   console.log('Data saved to MongoDB Database');
 }

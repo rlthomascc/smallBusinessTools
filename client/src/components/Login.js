@@ -1,11 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable no-useless-constructor */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { setInStorage } from '../../utils/storage';
 import $ from 'jquery';
+import { setInStorage } from '../../utils/storage';
 
 
 const crypto = require('crypto');
@@ -53,8 +57,8 @@ class Login extends Component {
         this.setState({
           redirect: 'home',
           token: data.token,
-        })
-        setInStorage('token', data.token)
+        });
+        setInStorage('token', data.token);
       },
       error: (err) => {
         console.log(err);
@@ -149,13 +153,16 @@ class Login extends Component {
   }
 
   render() {
-    const {redirect, token} = this.state
+    const { redirect, token } = this.state;
     if (redirect === 'home') {
-      location.reload()
-      return <Redirect to={{
-        pathname: "/home",
-        state: {token: token}
-      }} />
+      location.reload();
+      return (
+        <Redirect to={{
+          pathname: '/home',
+          state: { token },
+        }}
+        />
+      );
     }
     return (
       this.login()
