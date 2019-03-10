@@ -1,3 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-inner-declarations */
+/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
@@ -50,18 +55,18 @@ app.post('/signup', (req, res) => {
             res.status(400).end('Error: Account already exists.');
             console.log('Error: Account already exists.');
           } else {
-            //callback function with saved id
+            // callback function with saved id
             function bringDataBack(data) {
-              //create userSession
+              // create userSession
               session.save({
-                email: email,
+                email,
                 userID: data,
               });
-              //return status code success
-                return res.status(200).send({
-                  success: 'true',
-                  message: 'Valid sign up and sign in',
-                  token: data.toString()
+              // return status code success
+              return res.status(200).send({
+                success: 'true',
+                message: 'Valid sign up and sign in',
+                token: data.toString(),
               });
             }
             // 2. Save
@@ -120,52 +125,51 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/verify', (req, res) => {
-  //get the token;
-  const {token} = req.query;
-  //verify the token is one of a kind and its not deleted
+  // get the token;
+  const { token } = req.query;
+  // verify the token is one of a kind and its not deleted
   session.userSession.find({
     userId: token,
     isDeleted: false,
   }, (err, sessions) => {
-    if(sessions < 1) {
-          console.log('server error')
-          return res.status(404).send({
-            success: false,
-            message: 'Error: Server error!'
-          })
+    if (sessions < 1) {
+      console.log('server error');
+      return res.status(404).send({
+        success: false,
+        message: 'Error: Server error!',
+      });
     }
-     return res.status(200).send({
-        success: true,
-        message: 'Good Token'
-      })
+    return res.status(200).send({
+      success: true,
+      message: 'Good Token',
+    });
   });
 });
 
 app.patch('/logout', (req, res) => {
-  //get the token;
-  const {token} = req.body;
-  //verify the token is one of a kind and its not deleted
+  // get the token;
+  const { token } = req.body;
+  // verify the token is one of a kind and its not deleted
   session.userSession.findOneAndUpdate({
     userId: token,
     isDeleted: false,
   }, {
     $set: {
-      isDeleted: true
-    }
+      isDeleted: true,
+    },
   }, null, (err, sessions) => {
     if (err) {
       res.send({
         success: false,
-        message: 'Error: Server error!'
-      })
+        message: 'Error: Server error!',
+      });
     }
     res.send({
       success: true,
-      message: 'Updated Token'
-    })
-  })
-})
-
+      message: 'Updated Token',
+    });
+  });
+});
 
 
 const port = process.env.PORT || 3000;

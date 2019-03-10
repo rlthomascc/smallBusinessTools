@@ -1,9 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { setInStorage } from '../../utils/storage';
 import $ from 'jquery';
+import { setInStorage } from '../../utils/storage';
 
 const crypto = require('crypto');
 
@@ -91,7 +96,9 @@ class Signup extends Component {
   }
 
   handleSubmit(e) {
-    const { password, username, email, redirect } = this.state;
+    const {
+      password, username, email, redirect,
+    } = this.state;
     e.preventDefault();
     $.ajax({
       method: 'POST',
@@ -104,10 +111,10 @@ class Signup extends Component {
       },
       success: (data) => {
         console.log(data);
-        setInStorage('token', data.token)
-          this.setState({
-            redirect: 'home',
-          })
+        setInStorage('token', data.token);
+        this.setState({
+          redirect: 'home',
+        });
       },
       error: (err) => {
         if (err.responseText === 'Error: Username can not be blank.') {
@@ -122,7 +129,7 @@ class Signup extends Component {
           alert(err.responseText);
           this.setState({
             redirect: 'login',
-          })
+          });
         } else {
           console.log(err, 'err');
         }
@@ -215,7 +222,7 @@ class Signup extends Component {
       return <Redirect to="/home" />;
     }
     if (redirect === 'login') {
-      return <Redirect to="/login" />
+      return <Redirect to="/login" />;
     }
     return (
       this.signUp()
@@ -226,7 +233,7 @@ class Signup extends Component {
   render() {
     return (
       this.renderView()
-    )
+    );
   }
 }
 
