@@ -147,7 +147,7 @@ class Login extends Component {
         />
         <br />
         <p className="text-center">Don't have an account, yet? </p>
-        <a href="http://localhost:3000/#/signup"><p className="text-center">Sign Up</p></a>
+        <a href="#/signup"><p className="text-center">Sign Up</p></a>
       </div>
     );
   }
