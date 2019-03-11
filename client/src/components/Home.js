@@ -12,7 +12,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { Redirect } from 'react-router-dom';
+import { IoIosHome, IoMdPersonAdd, IoIosCash } from 'react-icons/io';
+import {
+  FaUserPlus, FaHome, FaTags, FaMoneyBillAlt, FaLandmark, FaHandHoldingUsd, FaDollarSign, FaDonate, FaCog, FaChevronDown, FaCaretDown, FaAngleDown, FaAddressBook, FaKey,
+} from 'react-icons/fa';
 import { getFromStorage } from '../../utils/storage';
+
 
 class Home extends Component {
   constructor(props) {
@@ -78,14 +83,26 @@ class Home extends Component {
     return (
       <nav className="nav flex-column nav-pills col-sm-2 text-center bg-light">
         <p className="h3 text-center">
-          LOGO
-          <br />
-          HERE
+          <FaKey size={50} />
         </p>
-        <a className="nav-link" href="#">Active</a>
-        <a className="nav-link" href="#">Link</a>
-        <a className="nav-link" href="#">Link</a>
-        <a className="nav-link" href="#">Link</a>
+        <a className="nav-link" href="#/home">
+          <FaHome size={20} />
+          {' '}
+          Home
+        </a>
+        <a className="nav-link" href="#">
+          <FaAddressBook size={20} />
+          {' '}
+      Agents
+        </a>
+        <a className="nav-link" href="#">
+          <FaLandmark size={20} />
+          {' '}
+      Investments
+        </a>
+        <a className="nav-link" href="#"><FaHandHoldingUsd size={30} /></a>
+        <a className="nav-link" href="#"><FaUserPlus size={30} /></a>
+        <a className="nav-link" href="#"><FaMoneyBillAlt size={30} /></a>
         <a className="nav-link btn btn-danger text-light" onClick={(this.logout.bind(this))}>Log Out</a>
       </nav>
     );
