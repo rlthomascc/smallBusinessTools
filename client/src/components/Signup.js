@@ -142,62 +142,11 @@ class Signup extends Component {
       usernameValid, emailValid, passwordValid, confirmPasswordValid,
     } = this.state;
     return (
-      <div id="signUpForm" className="bg-light border border-top-0 border-bottom-0 rounded col-md-4">
-        <br />
-        <p className="h1 text-center">Sign Up</p>
-        <p className="text-center">It's free and only takes a minute.</p>
-        <br />
-        <hr
-          style={{
-            color: '#F2F2F2',
-            backgroundColor: '#F2F2F2',
-            height: 1,
-          }}
-        />
-        <br />
-        <form onSubmit={this.handleSubmit.bind(this)} className="needs-validation">
-          <div className="form-group col-sm">
-            <label className="font-weight-bold">Username</label>
-            <input onChange={this.usernameValidation.bind(this)} type="text" className={`form-control ${usernameValid}`} placeholder="Enter Username" />
-            <div className="valid-feedback">
-        Looks Good!
-            </div>
-            <div className="invalid-feedback">
-        Please enter a valid Username!
-            </div>
-          </div>
-          <div className="form-group col-sm">
-            <label className="font-weight-bold">Email</label>
-            <input onChange={this.emailValidation.bind(this)} type="email" className={`form-control ${emailValid}`} placeholder="Enter Email" />
-            <div className="valid-feedback">
-        Looks Good!
-            </div>
-            <div className="invalid-feedback">
-        Please enter a valid Email!
-            </div>
-          </div>
-          <div className="form-group col-sm">
-            <label className="font-weight-bold">Password</label>
-            <input onChange={this.passwordValidation.bind(this)} type="password" className={`form-control ${passwordValid}`} placeholder="Enter Password" />
-            <div className="valid-feedback">
-        Looks Good!
-            </div>
-            <div className="invalid-feedback">
-        Please enter a valid Password!
-            </div>
-          </div>
-          <div className="form-group col-sm">
-            <label className="font-weight-bold">Confirm Password</label>
-            <input onChange={this.confirmPasswordValidation.bind(this)} type="password" className={`form-control ${confirmPasswordValid}`} placeholder="Confirm Password" />
-            <div className="valid-feedback">
-        Looks Good!
-            </div>
-            <div className="invalid-feedback">
-        Please confirm Password!
-            </div>
-            <br />
-            <button type="submit" className="btn btn-success btn-lg btn-block">Sign Up</button>
-          </div>
+      <div className="d-flex justify-content-center">
+        <div id="signUpForm" className="bg-light border border-top-0 border-bottom-0 rounded col-md-4">
+          <br />
+          <p className="h1 text-center">Sign Up</p>
+          <p className="text-center">It's free and only takes a minute.</p>
           <br />
           <hr
             style={{
@@ -207,11 +156,63 @@ class Signup extends Component {
             }}
           />
           <br />
-          <p className="text-center">Already have an account?</p>
-          <a href="http://localhost:3000/#/login"><p className="text-center">Login</p></a>
-        </form>
+          <form onSubmit={this.handleSubmit.bind(this)} className="needs-validation">
+            <div className="form-group col-sm">
+              <label className="font-weight-bold">Username</label>
+              <input onChange={this.usernameValidation.bind(this)} type="text" className={`form-control ${usernameValid}`} placeholder="Enter Username" />
+              <div className="valid-feedback">
+        Looks Good!
+              </div>
+              <div className="invalid-feedback">
+        Please enter a valid Username!
+              </div>
+            </div>
+            <div className="form-group col-sm">
+              <label className="font-weight-bold">Email</label>
+              <input onChange={this.emailValidation.bind(this)} type="email" className={`form-control ${emailValid}`} placeholder="Enter Email" />
+              <div className="valid-feedback">
+        Looks Good!
+              </div>
+              <div className="invalid-feedback">
+        Please enter a valid Email!
+              </div>
+            </div>
+            <div className="form-group col-sm">
+              <label className="font-weight-bold">Password</label>
+              <input onChange={this.passwordValidation.bind(this)} type="password" className={`form-control ${passwordValid}`} placeholder="Enter Password" />
+              <div className="valid-feedback">
+        Looks Good!
+              </div>
+              <div className="invalid-feedback">
+        Please enter a valid Password!
+              </div>
+            </div>
+            <div className="form-group col-sm">
+              <label className="font-weight-bold">Confirm Password</label>
+              <input onChange={this.confirmPasswordValidation.bind(this)} type="password" className={`form-control ${confirmPasswordValid}`} placeholder="Confirm Password" />
+              <div className="valid-feedback">
+        Looks Good!
+              </div>
+              <div className="invalid-feedback">
+        Please confirm Password!
+              </div>
+              <br />
+              <button type="submit" className="btn btn-success btn-lg btn-block">Sign Up</button>
+            </div>
+            <br />
+            <hr
+              style={{
+                color: '#F2F2F2',
+                backgroundColor: '#F2F2F2',
+                height: 1,
+              }}
+            />
+            <br />
+            <p className="text-center">Already have an account?</p>
+            <a href="http://localhost:3000/#/login"><p className="text-center">Login</p></a>
+          </form>
+        </div>
       </div>
-
     );
   }
 

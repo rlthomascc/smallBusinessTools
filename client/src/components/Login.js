@@ -101,53 +101,55 @@ class Login extends Component {
   login() {
     const { emailValid, passwordValid } = this.state;
     return (
-      <div id="loginForm" className="bg-light col-sm-4 border border-bottom-0 border-top-0">
-        <p className="h1 text-center">Log In</p>
-        <br />
-        <hr
-          style={{
-            color: '#F2F2F2',
-            backgroundColor: '#F2F2F2',
-            height: 1,
-          }}
-        />
-        <br />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className="form-group col-sm">
-            <label className="font-weight-bold">Email Address</label>
-            <input onChange={this.emailValidation.bind(this)} type="email" className={`form-control ${emailValid}`} placeholder="Enter email" />
-            <div className="invalid-feedback">
+      <div className="d-flex justify-content-center">
+        <div id="loginForm" className="bg-light col-sm-4 border border-bottom-0 border-top-0">
+          <p className="h1 text-center">Log In</p>
+          <br />
+          <hr
+            style={{
+              color: '#F2F2F2',
+              backgroundColor: '#F2F2F2',
+              height: 1,
+            }}
+          />
+          <br />
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <div className="form-group col-sm">
+              <label className="font-weight-bold">Email Address</label>
+              <input onChange={this.emailValidation.bind(this)} type="email" className={`form-control ${emailValid}`} placeholder="Enter email" />
+              <div className="invalid-feedback">
             Please insert a valid Email Address!
-            </div>
-            <div className="valid-feedback">
+              </div>
+              <div className="valid-feedback">
             Looks Good!
+              </div>
             </div>
-          </div>
-          <div className="form-group col-sm">
-            <label className="font-weight-bold">Password</label>
-            <input onChange={this.passwordValidation.bind(this)} type="password" className={`form-control ${passwordValid}`} placeholder="Enter password" />
-            <div className="invalid-feedback">
+            <div className="form-group col-sm">
+              <label className="font-weight-bold">Password</label>
+              <input onChange={this.passwordValidation.bind(this)} type="password" className={`form-control ${passwordValid}`} placeholder="Enter password" />
+              <div className="invalid-feedback">
           Please enter a valid Password!
-            </div>
-            <div className="valid-feedback">
+              </div>
+              <div className="valid-feedback">
           Looks Good!
+              </div>
+              <br />
+              <button type="submit" className="btn btn-success btn-lg btn-block">Submit</button>
+              <br />
+              <a href="http://google.com/"><p className="text-right font-italic">Forgot Password</p></a>
             </div>
-            <br />
-            <button type="submit" className="btn btn-success btn-lg btn-block">Submit</button>
-            <br />
-            <a href="http://google.com/"><p className="text-right font-italic">Forgot Password</p></a>
-          </div>
-        </form>
-        <hr
-          style={{
-            color: '#F2F2F2',
-            backgroundColor: '#F2F2F2',
-            height: 1,
-          }}
-        />
-        <br />
-        <p className="text-center">Don't have an account, yet? </p>
-        <a href="#/signup"><p className="text-center">Sign Up</p></a>
+          </form>
+          <hr
+            style={{
+              color: '#F2F2F2',
+              backgroundColor: '#F2F2F2',
+              height: 1,
+            }}
+          />
+          <br />
+          <p className="text-center">Don't have an account, yet? </p>
+          <a href="#/signup"><p className="text-center">Sign Up</p></a>
+        </div>
       </div>
     );
   }
