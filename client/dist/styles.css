@@ -1,3 +1,8 @@
+body {
+    background-color: #f2f3f8;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 #loginForm, #signUpForm {
     padding: 30px 50px 30px 50px;
     margin-top: 50px;
@@ -7,4 +12,22 @@
 #logout {
     padding: 30px 30px 30px 30px;
     text-align: center;
+}
+
+#topnav {
+    float: right;
+    width: 83.5%;
+}
+
+.nav > li > a:hover{
+    background-color:#2f3338;
+}
+
+.dropdown-menu > a:hover {
+    background-color:#2f3338;
+}
+
+#sidenav {
+    position: fixed;
+    height: 100%;
 }
