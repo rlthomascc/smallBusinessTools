@@ -81,7 +81,7 @@ class Home extends Component {
   homePage() {
     return (
       <div>
-        <p>HELLO WORLD</p>
+        <p>HELLO WORLD!</p>
       </div>
     );
   }
