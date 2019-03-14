@@ -171,6 +171,21 @@ app.patch('/logout', (req, res) => {
   });
 });
 
+app.get('/user', (req, res) => {
+  const { token } = req.query;
+  newUser.User.find({
+    _id: token,
+  }, (err, users) => {
+    if (users < 1) {
+      console.log('server error');
+      return res.status(404).send({
+        success: false,
+        message: 'Error: Server error!',
+      });
+    }
+    return res.send(users[0]._doc.username);
+  });
+});
 
 const port = process.env.PORT || 3000;
 

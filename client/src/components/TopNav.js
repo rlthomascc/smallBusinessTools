@@ -5,12 +5,36 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 class TopNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: '',
+    };
+  }
+
   componentDidMount() {
-    console.log('welcome');
+    const { token } = this.props;
+    $.ajax({
+      method: 'GET',
+      url: '/user',
+      data: {
+        token,
+      },
+      success: (data) => {
+        console.log(data, 'Success');
+        this.setState({
+          userName: data,
+        });
+      },
+      error: (err) => {
+        console.log(err, 'ERR');
+      },
+    });
   }
 
 
   topNav() {
+    const { userName } = this.state;
     return (
       <nav id="topnav" className="navbar navbar-light bg-white flex-md-nowrap align-self-start">
         <ul className="navbar-nav px-3">
@@ -18,7 +42,16 @@ class TopNav extends Component {
         Logo Here
           </li>
         </ul>
-        <p className="h5 justify-content-left"> Welcome USER NAME HERE </p>
+        <p className="h5 justify-content-left">
+          {' '}
+          <b>
+            {' '}
+Welcome
+            {' '}
+            {userName.charAt(0).toUpperCase() + userName.slice(1)}
+            {' '}
+          </b>
+        </p>
         {/* <input className="form-control form-control-light" type="text" placeholder="Search" aria-label="Search" /> */}
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap">
