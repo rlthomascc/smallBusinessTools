@@ -10,13 +10,27 @@ import {
 
 
 class SideNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: 'Home',
+    };
+  }
+
+  setActive(e) {
+    this.setState({
+      active: e,
+    });
+  }
+
   sideNav() {
+    const { active } = this.state;
     return (
       <nav id="sidenav" className="navbar navbar-dark col-md-2 bg-dark rounded-0">
         <div className="sidebar-sticky">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="nav-link text-warning" href="#">
+              <a className={`nav-link ${active === 'Home' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Home')}>
                 <FaHome size={20} />
                 {' '}
         Home
@@ -24,8 +38,8 @@ class SideNav extends Component {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false">
-                <FaAddressBook size={20} id="icon" className="text-secondary" />
+              <a className={`nav-link dropdown-toggle ${active === 'Agents' ? 'text-warning' : 'text-light'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('Agents')}>
+                <FaAddressBook size={20} id="icon" className={active === 'Agents' ? 'text-warning' : 'text-secondary'} />
                 {' '}
           Agents
               </a>
@@ -40,8 +54,8 @@ class SideNav extends Component {
             </li>
 
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false">
-                <FaLandmark size={20} id="icon" className="text-secondary" />
+              <a className={`nav-link dropdown-toggle ${active === 'InvestmentDrop' ? 'text-warning' : 'text-light'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('InvestmentDrop')}>
+                <FaLandmark size={20} id="icon" className={active === 'InvestmentDrop' ? 'text-warning' : 'text-secondary'} />
                 {' '}
           Investments
               </a>
@@ -56,27 +70,24 @@ class SideNav extends Component {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-light" href="#/home">
-                <FaHandHoldingUsd size={30} id="icon" className="text-secondary" />
+              <a className="nav-link" href="#/home" onClick={() => this.setActive('Investment')}>
+                <FaHandHoldingUsd size={30} id="icon" className={active === 'Investment' ? 'text-warning' : 'text-secondary'} />
               </a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-light" href="#/home">
-                <FaUserPlus size={30} id="icon" className="text-secondary" />
+              <a className="nav-link" href="#/home" onClick={() => this.setActive('New Agent')}>
+                <FaUserPlus size={30} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
               </a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-light" href="#/home">
-                <FaMoneyBillAlt size={30} id="icon" className="text-secondary" />
+              <a className="nav-link" href="#/home" onClick={() => this.setActive('Transaction')}>
+                <FaMoneyBillAlt size={30} id="icon" className={active === 'Transaction' ? 'text-warning' : 'text-secondary'} />
               </a>
             </li>
 
             <li className="nav-item">
-              {/* <a className="nav-link text-danger" href="#" onClick={this.props.logout.bind(this)}>
-        Log Out
-              </a> */}
             </li>
           </ul>
         </div>

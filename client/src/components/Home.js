@@ -101,7 +101,7 @@ class Home extends Component {
     if (token) {
       return (
         <div id="container">
-          <TopNav logout={this.logout} />
+          <TopNav logout={this.logout} token={token} />
           <SideNav logout={this.logout} />
           {/* {this.homePage()} */}
         </div>
