@@ -80,7 +80,7 @@ class Home extends Component {
 
   homePage() {
     return (
-      <div>
+      <div id="home">
         <p>HELLO WORLD!</p>
       </div>
     );
@@ -100,10 +100,10 @@ class Home extends Component {
     }
     if (token) {
       return (
-        <div>
+        <div id="container">
           <TopNav logout={this.logout} />
           <SideNav logout={this.logout} />
-          {this.homePage()}
+          {/* {this.homePage()} */}
         </div>
       );
     }
