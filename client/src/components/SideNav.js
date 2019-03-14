@@ -15,9 +15,6 @@ class SideNav extends Component {
       <nav id="sidenav" className="navbar navbar-dark col-md-2 bg-dark rounded-0">
         <div className="sidebar-sticky">
           <ul className="nav flex-column">
-            <p className="h3 text-warning">
-              <FaKey size={50} />
-            </p>
             <li className="nav-item">
               <a className="nav-link text-warning" href="#">
                 <FaHome size={20} />
