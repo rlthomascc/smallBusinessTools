@@ -15,6 +15,7 @@ import $ from 'jquery';
 import { Redirect } from 'react-router-dom';
 import TopNav from './TopNav';
 import SideNav from './SideNav';
+import Homepage from './Homepage';
 import { getFromStorage } from '../../utils/storage';
 
 
@@ -78,19 +79,12 @@ class Home extends Component {
     });
   }
 
-  homePage() {
-    return (
-      <div id="home">
-        <p>HELLO WORLD!</p>
-      </div>
-    );
-  }
-
   renderView() {
     const { isLoading, token } = this.state;
     if (isLoading) {
       return (
         <div>
+          {/* LOADING */}
           <p>Loading...</p>
         </div>
       );
@@ -100,10 +94,10 @@ class Home extends Component {
     }
     if (token) {
       return (
-        <div id="container">
+        <div id="container-fluid">
           <TopNav logout={this.logout} token={token} />
           <SideNav logout={this.logout} />
-          {/* {this.homePage()} */}
+          <Homepage className="text-center" />
         </div>
       );
     }

@@ -87,8 +87,7 @@ class SideNav extends Component {
               </a>
             </li>
 
-            <li className="nav-item">
-            </li>
+            <li className="nav-item" />
           </ul>
         </div>
       </nav>
