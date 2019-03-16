@@ -16,31 +16,28 @@ body {
 
 #container {
     display: flex;
-    /* justify-content: space-between; */
 }
 
 
 #topnav {
-    margin-left: auto;
+    position: relative;
+    margin: 0 auto;
     flex-basis: 83.5%;
-    order: 3;
+    order: 2;
 }
 
 #sidenav {
     position: absolute;
-    top: 0;
+    top: 0; 
     left: 0;
     bottom: 0;
-    align-items: stretch;
     flex-direction: column;
     flex: 1;
     order: 1;
 }
 
-#home {
-    align-items: flex-end;
-    margin-left: auto;
-    margin-top: 100px;
+#homePage {
+    align-items: flex-start;
     flex: 1;
     order: 3;
 }
