@@ -37,7 +37,6 @@ body {
 }
 
 #homePage {
-    align-items: flex-start;
     flex: 1;
     order: 3;
 }
