@@ -32,7 +32,7 @@ class SideNav extends Component {
         <ul className="nav flex-column">
           <li className="nav-item">
             <a className={`nav-link ${active === 'Home' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Home')}>
-              <FaHome size={20} />
+              <FaHome size={22} id="icon" className={active === 'Home' ? 'text-warning' : 'text-secondary'} />
               {' '}
       Home
             </a>
@@ -71,20 +71,26 @@ class SideNav extends Component {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#/home" onClick={() => this.setActive('Investment')}>
-              <FaHandHoldingUsd size={30} id="icon" className={active === 'Investment' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Investment' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Investment')}>
+              <FaHandHoldingUsd id="icon" size={30} id="icon" className={active === 'Investment' ? 'text-warning' : 'text-secondary'} />
+              {' '}
+              Add Investment
             </a>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#/home" onClick={() => this.setActive('New Agent')}>
-              <FaUserPlus size={30} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'New Agent' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('New Agent')}>
+              <FaUserPlus id="icon" size={30} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
+              {' '}
+              Add Agent
             </a>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#/home" onClick={() => this.setActive('Transaction')}>
-              <FaMoneyBillAlt size={30} id="icon" className={active === 'Transaction' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Transaction' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Transaction')}>
+              <FaMoneyBillAlt id="icon" size={30} id="icon" className={active === 'Transaction' ? 'text-warning' : 'text-secondary'} />
+              {' '}
+              Add Transaction
             </a>
           </li>
 
