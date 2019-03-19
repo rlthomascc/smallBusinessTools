@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import {
   FaUserPlus, FaHome, FaTags, FaMoneyBillAlt, FaLandmark, FaHandHoldingUsd, FaDollarSign, FaDonate, FaCog, FaChevronDown, FaCaretDown, FaAngleDown, FaAddressBook, FaKey,
 } from 'react-icons/fa';
-
+import Modal from 'react-modal';
 
 class SideNav extends Component {
   constructor(props) {
@@ -82,6 +82,7 @@ class SideNav extends Component {
             <a className={`nav-link ${active === 'New Agent' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('New Agent')}>
               <FaUserPlus id="icon" size={30} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
               {' '}
+              {/* agent */}
               Add Agent
             </a>
           </li>
