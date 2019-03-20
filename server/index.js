@@ -124,6 +124,11 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.post('/agent', (req, res) => {
+  console.log(req.query, 'query');
+  console.log(req.body, 'body');
+});
+
 app.get('/verify', (req, res) => {
   // get the token;
   const { token } = req.query;
@@ -186,6 +191,7 @@ app.get('/user', (req, res) => {
     return res.send(users[0]._doc.username);
   });
 });
+
 
 const port = process.env.PORT || 3000;
 
