@@ -1,17 +1,20 @@
+/* eslint-disable no-useless-constructor */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable react/jsx-filename-extension */
 import React, { Component } from 'react';
 
 class Transaction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: '',
     };
   }
+
 
   transaction() {
     return (
       <div>
-        <p className="h1">TRANSACTION FORM HERE</p>
+        <h1>TRANSACTION FORM HERE</h1>
       </div>
     );
   }

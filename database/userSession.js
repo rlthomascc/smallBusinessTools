@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-mongoose.connect('mongodb://localhost/authentication/newUser');
+mongoose.connect('mongodb://localhost/smallBusinessTools/newUser');
 
 const userSessionSchema = new mongoose.Schema({
   email: { type: String, default: '' },
@@ -18,7 +18,7 @@ userSessionSchema.methods.validPassword = password => bcrypt.compareSync(passwor
 const userSession = mongoose.model('userSession', userSessionSchema);
 
 function save(e) {
-  console.log(e.userID)
+  console.log(e.userID);
   const obj = new userSession({
     email: e.email,
     userId: e.userID,
