@@ -7,13 +7,16 @@ import React, { Component } from 'react';
 import {
   FaUserPlus, FaHome, FaTags, FaMoneyBillAlt, FaLandmark, FaHandHoldingUsd, FaDollarSign, FaDonate, FaCog, FaChevronDown, FaCaretDown, FaAngleDown, FaAddressBook, FaKey,
 } from 'react-icons/fa';
-import Modal from 'react-modal';
+import Modal from 'react-awesome-modal';
 
 class SideNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
       active: 'Home',
+      transactionModal: false,
+      agentModal: false,
+      investmentModal: false,
     };
   }
 
@@ -21,6 +24,54 @@ class SideNav extends Component {
     this.setState({
       active: e,
     });
+  }
+
+  openAgent(e) {
+    console.log('open');
+    this.setState({
+      agentModal: true,
+      active: e,
+    });
+  }
+
+  closeAgent() {
+    console.log('close');
+    this.setState({ agentModal: false });
+  }
+
+  openTransaction(e) {
+    console.log('open');
+    this.setState({
+      transactionModal: true,
+      active: e,
+    });
+  }
+
+  closeTransaction() {
+    console.log('close');
+    this.setState({ transactionModal: false });
+  }
+
+  openInvestment(e) {
+    console.log('open');
+    this.setState({
+      investmentModal: true,
+      active: e,
+    });
+  }
+
+  closeInvestment() {
+    console.log('close');
+    this.setState({ investmentModal: false });
+  }
+
+  popUp() {
+    console.log('pop up');
+    return (
+      <div>
+        <p>TESTING</p>
+      </div>
+    );
   }
 
   sideNav() {
@@ -71,25 +122,24 @@ class SideNav extends Component {
           </li>
 
           <li className="nav-item">
-            <a className={`nav-link ${active === 'Investment' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Investment')}>
-              <FaHandHoldingUsd id="icon" size={30} id="icon" className={active === 'Investment' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Investment' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.openInvestment('Investment')}>
+              <FaHandHoldingUsd id="icon" size={25} id="icon" className={active === 'Investment' ? 'text-warning' : 'text-secondary'} />
               {' '}
               Add Investment
             </a>
           </li>
 
           <li className="nav-item">
-            <a className={`nav-link ${active === 'New Agent' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('New Agent')}>
-              <FaUserPlus id="icon" size={30} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'New Agent' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.openAgent('New Agent')}>
+              <FaUserPlus id="icon" size={25} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
               {' '}
-              {/* agent */}
               Add Agent
             </a>
           </li>
 
           <li className="nav-item">
-            <a className={`nav-link ${active === 'Transaction' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Transaction')}>
-              <FaMoneyBillAlt id="icon" size={30} id="icon" className={active === 'Transaction' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Transaction' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.openTransaction('Transaction')}>
+              <FaMoneyBillAlt id="icon" size={25} id="icon" className={active === 'Transaction' ? 'text-warning' : 'text-secondary'} />
               {' '}
               Add Transaction
             </a>
@@ -97,6 +147,38 @@ class SideNav extends Component {
 
           <li className="nav-item" />
         </ul>
+        <Modal
+          visible={this.state.transactionModal}
+          effect="fadeInUp"
+          onClickAway={() => this.closeTransaction()}
+        >
+          <div>
+            {this.popUp()}
+            <a onClick={() => this.closeTransaction()}>Close</a>
+          </div>
+        </Modal>
+
+        <Modal
+          visible={this.state.agentModal}
+          effect="fadeInUp"
+          onClickAway={() => this.closeAgent()}
+        >
+          <div>
+            {this.popUp()}
+            <a onClick={() => this.closeAgent()}>Close</a>
+          </div>
+        </Modal>
+
+        <Modal
+          visible={this.state.investmentModal}
+          effect="fadeInUp"
+          onClickAway={() => this.closeInvestment()}
+        >
+          <div>
+            {this.popUp()}
+            <a onClick={() => this.closeInvestment()}>Close</a>
+          </div>
+        </Modal>
       </div>
     );
   }
