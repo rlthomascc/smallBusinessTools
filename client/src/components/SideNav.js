@@ -8,6 +8,9 @@ import {
   FaUserPlus, FaHome, FaTags, FaMoneyBillAlt, FaLandmark, FaHandHoldingUsd, FaDollarSign, FaDonate, FaCog, FaChevronDown, FaCaretDown, FaAngleDown, FaAddressBook, FaKey,
 } from 'react-icons/fa';
 import Modal from 'react-awesome-modal';
+import Transaction from '../modals/Transaction';
+import Agent from '../modals/Agent';
+import Investment from '../modals/Investment';
 
 class SideNav extends Component {
   constructor(props) {
@@ -153,7 +156,7 @@ class SideNav extends Component {
           onClickAway={() => this.closeTransaction()}
         >
           <div>
-            {this.popUp()}
+            <Transaction />
             <a onClick={() => this.closeTransaction()}>Close</a>
           </div>
         </Modal>
@@ -164,7 +167,7 @@ class SideNav extends Component {
           onClickAway={() => this.closeAgent()}
         >
           <div>
-            {this.popUp()}
+            <Agent />
             <a onClick={() => this.closeAgent()}>Close</a>
           </div>
         </Modal>
@@ -175,7 +178,7 @@ class SideNav extends Component {
           onClickAway={() => this.closeInvestment()}
         >
           <div>
-            {this.popUp()}
+            <Investment />
             <a onClick={() => this.closeInvestment()}>Close</a>
           </div>
         </Modal>
