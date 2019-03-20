@@ -81,68 +81,68 @@ class SideNav extends Component {
     const { active } = this.state;
     return (
     // <nav id="sidenav" className="navbar navbar-dark col-md-2 bg-dark rounded-0">
-      <div className="sidenav sidebar-sticky navbar navbar-dark bg-dark rounded-0">
+      <div className="sidenav sidebar-sticky navbar navbar-light rounded-0 border">
 
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className={`nav-link ${active === 'Home' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.setActive('Home')}>
-              <FaHome size={22} id="icon" className={active === 'Home' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Home' ? 'text-danger' : 'text-secondary'}`} href="#/home" onClick={() => this.setActive('Home')}>
+              <FaHome size={22} id="icon" className={active === 'Home' ? 'text-danger' : 'text-secondary'} />
               {' '}
       Home
             </a>
           </li>
 
           <li className="nav-item dropdown">
-            <a className={`nav-link dropdown-toggle ${active === 'Agents' ? 'text-warning' : 'text-light'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('Agents')}>
-              <FaAddressBook size={20} id="icon" className={active === 'Agents' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link dropdown-toggle ${active === 'Agents' ? 'text-danger' : 'text-secondary'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('Agents')}>
+              <FaAddressBook size={20} id="icon" className={active === 'Agents' ? 'text-danger' : 'text-secondary'} />
               {' '}
         Agents
             </a>
-            <div className="dropdown-menu bg-dark">
-              <a className="dropdown-item text-light" href="#/home">Overview</a>
-              <a className="dropdown-item text-light" href="#/home">Item 2</a>
-              <a className="dropdown-item text-light" href="#/home">Item 3</a>
-              <a className="dropdown-item text-light" href="#/home">Item 4</a>
+            <div className="dropdown-menu bg-light">
+              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
+              <a className="dropdown-item text-secondary" href="#/home">Item 2</a>
+              <a className="dropdown-item text-secondary" href="#/home">Item 3</a>
+              <a className="dropdown-item text-secondary" href="#/home">Item 4</a>
               <div className="dropdown-divider" />
-              <a className="dropdown-item text-light" href="#/home">Seperate</a>
+              <a className="dropdown-item text-secondary" href="#/home">Seperate</a>
             </div>
           </li>
 
           <li className="nav-item dropdown">
-            <a className={`nav-link dropdown-toggle ${active === 'InvestmentDrop' ? 'text-warning' : 'text-light'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('InvestmentDrop')}>
-              <FaLandmark size={20} id="icon" className={active === 'InvestmentDrop' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link dropdown-toggle ${active === 'InvestmentDrop' ? 'text-danger' : 'text-secondary'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('InvestmentDrop')}>
+              <FaLandmark size={20} id="icon" className={active === 'InvestmentDrop' ? 'text-danger' : 'text-secondary'} />
               {' '}
         Investments
             </a>
-            <div className="dropdown-menu bg-dark">
-              <a className="dropdown-item text-light" href="#/home">Overview</a>
-              <a className="dropdown-item text-light" href="#/home">Item 2</a>
-              <a className="dropdown-item text-light" href="#/home">Item 3</a>
-              <a className="dropdown-item text-light" href="#/home">Item 4</a>
+            <div className="dropdown-menu bg-light">
+              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
+              <a className="dropdown-item text-secondary" href="#/home">Item 2</a>
+              <a className="dropdown-item text-secondary" href="#/home">Item 3</a>
+              <a className="dropdown-item text-secondary" href="#/home">Item 4</a>
               <div className="dropdown-divider" />
-              <a className="dropdown-item text-light" href="#/home">Seperate</a>
+              <a className="dropdown-item text-secondary" href="#/home">Seperate</a>
             </div>
           </li>
 
           <li className="nav-item">
-            <a className={`nav-link ${active === 'Investment' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.openInvestment('Investment')}>
-              <FaHandHoldingUsd id="icon" size={25} id="icon" className={active === 'Investment' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Investment' ? 'text-danger' : 'text-secondary'}`} href="#/home" onClick={() => this.openInvestment('Investment')}>
+              <FaHandHoldingUsd id="icon" size={25} id="icon" className={active === 'Investment' ? 'text-danger' : 'text-secondary'} />
               {' '}
               Add Investment
             </a>
           </li>
 
           <li className="nav-item">
-            <a className={`nav-link ${active === 'New Agent' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.openAgent('New Agent')}>
-              <FaUserPlus id="icon" size={25} id="icon" className={active === 'New Agent' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'New Agent' ? 'text-danger' : 'text-secondary'}`} href="#/home" onClick={() => this.openAgent('New Agent')}>
+              <FaUserPlus id="icon" size={25} id="icon" className={active === 'New Agent' ? 'text-danger' : 'text-secondary'} />
               {' '}
               Add Agent
             </a>
           </li>
 
           <li className="nav-item">
-            <a className={`nav-link ${active === 'Transaction' ? 'text-warning' : 'text-light'}`} href="#/home" onClick={() => this.openTransaction('Transaction')}>
-              <FaMoneyBillAlt id="icon" size={25} id="icon" className={active === 'Transaction' ? 'text-warning' : 'text-secondary'} />
+            <a className={`nav-link ${active === 'Transaction' ? 'text-danger' : 'text-secondary'}`} href="#/home" onClick={() => this.openTransaction('Transaction')}>
+              <FaMoneyBillAlt id="icon" size={25} id="icon" className={active === 'Transaction' ? 'text-danger' : 'text-secondary'} />
               {' '}
               Add Transaction
             </a>

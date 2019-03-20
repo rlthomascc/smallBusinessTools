@@ -36,13 +36,13 @@ class TopNav extends Component {
   topNav() {
     const { userName } = this.state;
     return (
-      <nav id="topnav" className="navbar navbar-light bg-white">
-        <ul className="navbar-nav px-5 ml-auto">
+      <nav id="topnav" className="navbar navbar-dark bg-dark rounded-0 border border-secondary">
+        <ul className="navbar-nav px-5 ml-auto text-light">
           <li className="nav-item text-nowrap">
         Logo Here
           </li>
         </ul>
-        <p className="h5 justify-content-left">
+        <p className="h5 justify-content-left text-light">
           {' '}
           <b>
             {' '}

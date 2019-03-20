@@ -1,5 +1,5 @@
 body {
-    background-color: #f2f3f8;
+    /* background-color: #f2f3f8; */
     font-family: Helvetica;
 }
 
@@ -15,15 +15,20 @@ body {
 }
 
 .nav > li > a:focus, .nav > li > a:active, .nav > li > a:hover {
-    background-color: #2f3338;
+    background-color: white;
 }
 
 .dropdown-menu > a:hover, .dropdown-menu > a:active, .dropdown-menu > a:focus {
-    background-color: #2f3338;
+    background-color: white;
 }
 
+#topnav {
+    z-index: 2; /* Stay on top */
+}
+
+
 .sidenav {
-    /* background-color: #242938;  */
+    background-color: #f8f9fa;
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 250px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
