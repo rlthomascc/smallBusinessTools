@@ -9,6 +9,32 @@ const FormData = require('form-data');
 class Transaction extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      agents: [],
+      leads: [],
+    };
+  }
+
+  componentDidMount() {
+    axios.get('/agent')
+      .then((res) => {
+        this.setState({
+          agents: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios.get('/investment')
+      .then((res) => {
+        this.setState({
+          leads: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
 
@@ -46,6 +72,7 @@ class Transaction extends Component {
   }
 
   transaction() {
+    const { agents, leads } = this.state;
     return (
       <div className="container" id="modalContainer">
         <form onSubmit={this.fileUploadHandler.bind(this)}>
@@ -73,22 +100,21 @@ class Transaction extends Component {
               <option>Choose One...</option>
               <option>Buyer</option>
               <option>Seller</option>
+              <option>Multi</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="agent">Agent</label>
             <select className="form-control" id="agent" required>
               <option>Choose One...</option>
-              <option>Agent 1</option>
-              <option>Agent 2</option>
+              {agents.map((elem, i) => <option key={i}>{elem.name}</option>)}
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="leadSource">Lead Source</label>
             <select className="form-control" id="leadSource">
               <option>Choose One...</option>
-              <option>Lead Source 1</option>
-              <option>Lead Source 2</option>
+              {leads.map((elem, i) => <option key={i}>{elem.company}</option>)}
             </select>
           </div>
           <div className="form-group">
@@ -112,7 +138,7 @@ class Transaction extends Component {
           </div>
           <br />
           <div className="form-group text-center">
-            <input className="btn btn-primary btn-block" type="submit" value="Submit" />
+            <input className="btn btn-primary btn-block" type="submit" value="Submit" onClick={this.props.close} />
           </div>
         </form>
       </div>

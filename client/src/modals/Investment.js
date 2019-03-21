@@ -48,7 +48,7 @@ class Investment extends Component {
           </div>
           <br />
           <div className="form-group text-center">
-            <input className="btn btn-primary btn-block" type="submit" value="Submit" />
+            <input className="btn btn-primary btn-block" type="submit" value="Submit" onClick={this.props.close} />
           </div>
         </form>
       </div>

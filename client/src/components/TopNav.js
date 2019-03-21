@@ -53,7 +53,7 @@ class TopNav extends Component {
         {/* <input className="form-control form-control-light" type="text" placeholder="Search" aria-label="Search" /> */}
         <ul className="navbar-nav px-5">
           <li className="nav-item text-nowrap">
-            <a className="nav-link text-danger" href="#" onClick={this.props.logout.bind(this)}>
+            <a className="btn btn-outline-danger text-warning" href="#" onClick={this.props.logout.bind(this)}>
         Log Out
             </a>
           </li>

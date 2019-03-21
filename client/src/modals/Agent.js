@@ -54,6 +54,7 @@ class Agent extends Component {
               <option>Choose One...</option>
               <option>Buyers Agent</option>
               <option>Sellers Agent</option>
+              <option>Multi</option>
             </select>
           </div>
           <div className="input-group mb-3 col-sm-4">
@@ -76,7 +77,7 @@ class Agent extends Component {
           </div>
           <br />
           <div className="form-group text-center">
-            <input className="btn btn-primary btn-block" type="submit" value="Submit" />
+            <input className="btn btn-primary btn-block" type="submit" value="Submit" onClick={this.props.close} />
           </div>
         </form>
       </div>

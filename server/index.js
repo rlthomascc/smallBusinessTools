@@ -175,17 +175,6 @@ app.post('/agent', (req, res) => {
   });
 });
 
-// address: { type: String, default: '' },
-//   totalPrice: { type: String, default: '' },
-//   commission: { type: String, default: '' },
-//   typeOf: { type: String, default: '' },
-//   agent: { type: String, default: '' },
-//   leadSource: { type: String, default: '' },
-//   lender: { type: String, default: '' },
-//   tcFee: { type: String, default: '' },
-//   image: { type: String, default: 'https://picsum.photos/300/300/?random' },
-//   closeDate: { type: Date, default: Date.now() },
-//   timestamp: { type: Date, default: Date.now() },
 app.post('/transaction', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
@@ -218,27 +207,6 @@ app.post('/investment', (req, res) => {
   });
 });
 
-app.get('/verify', (req, res) => {
-  // get the token;
-  const { token } = req.query;
-  // verify the token is one of a kind and its not deleted
-  session.userSession.find({
-    userId: token,
-    isDeleted: false,
-  }, (err, sessions) => {
-    if (sessions < 1) {
-      console.log('server error');
-      return res.status(404).send({
-        success: false,
-        message: 'Error: Server error!',
-      });
-    }
-    return res.status(200).send({
-      success: true,
-      message: 'Good Token',
-    });
-  });
-});
 
 app.patch('/logout', (req, res) => {
   // get the token;
@@ -265,6 +233,28 @@ app.patch('/logout', (req, res) => {
   });
 });
 
+app.get('/verify', (req, res) => {
+  // get the token;
+  const { token } = req.query;
+  // verify the token is one of a kind and its not deleted
+  session.userSession.find({
+    userId: token,
+    isDeleted: false,
+  }, (err, sessions) => {
+    if (sessions < 1) {
+      console.log('server error');
+      return res.status(404).send({
+        success: false,
+        message: 'Error: Server error!',
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: 'Good Token',
+    });
+  });
+});
+
 app.get('/user', (req, res) => {
   const { token } = req.query;
   newUser.User.find({
@@ -281,7 +271,17 @@ app.get('/user', (req, res) => {
   });
 });
 
+app.get('/agent', (req, res) => {
+  newAgent.Agent.find({}).exec((err, agent) => {
+    res.send(agent);
+  });
+});
 
+app.get('/investment', (req, res) => {
+  newInvestment.Investment.find({}).exec((err, investment) => {
+    res.send(investment);
+  });
+});
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
