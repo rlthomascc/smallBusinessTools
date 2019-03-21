@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 
 
@@ -9,10 +11,41 @@ class Homepage extends Component {
     };
   }
 
+  table() {
+    return (
+      <div className="container">
+        <table className="table table-striped border">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Randy</td>
+              <td>Andy</td>
+              <td>Daniel</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Don</td>
+              <td>Joseph</td>
+              <td>Carlos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
   homePage() {
     return (
       <div id="homePage">
-        <p className="h2">HELLO WORLD</p>
+        {this.table()}
       </div>
     );
   }
