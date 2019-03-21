@@ -154,7 +154,7 @@ app.post('/login', (req, res) => {
 app.post('/agent', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
-      res.render(['index', 'fullName'], {
+      res.render('index', {
         msg: err,
       });
     }
@@ -162,6 +162,23 @@ app.post('/agent', (req, res) => {
     console.log(req.body, 'BODY');
     res.send(req.file.path);
   });
+});
+
+app.post('/transaction', (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      res.render('index', {
+        msg: err,
+      });
+    }
+    console.log(req.file, 'FILE');
+    console.log(req.body, 'BODY');
+    res.send(req.file.path);
+  });
+});
+
+app.post('/investment', (req, res) => {
+  console.log(req.body, 'body');
 });
 
 app.get('/verify', (req, res) => {

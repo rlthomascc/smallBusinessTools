@@ -157,7 +157,7 @@ class SideNav extends Component {
         >
           <div>
             <Transaction />
-            <a onClick={() => this.closeTransaction()}>Close</a>
+            <a className="text-center" onClick={() => this.closeTransaction()}>Close</a>
           </div>
         </Modal>
 
@@ -168,7 +168,7 @@ class SideNav extends Component {
         >
           <div>
             <Agent />
-            <a onClick={() => this.closeAgent()}>Close</a>
+            <a className="text-center" onClick={() => this.closeAgent()}>Close</a>
           </div>
         </Modal>
 
@@ -179,7 +179,7 @@ class SideNav extends Component {
         >
           <div>
             <Investment />
-            <a onClick={() => this.closeInvestment()}>Close</a>
+            <a className="text-center" onClick={() => this.closeInvestment()}>Close</a>
           </div>
         </Modal>
       </div>
