@@ -24,6 +24,7 @@ body {
 
 #topnav {
     z-index: 2; /* Stay on top */
+    height: 80px;
 }
 
 

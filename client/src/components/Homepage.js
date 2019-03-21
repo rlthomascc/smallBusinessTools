@@ -13,6 +13,7 @@ class Homepage extends Component {
     return (
       <div id="homePage">
         <p className="h2">HELLO WORLD</p>
+        <img src="/uploads/image-1553127084803.jpg" width="200" />
       </div>
     );
   }

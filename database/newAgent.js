@@ -3,10 +3,6 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/smallBusinessTools/newAgent');
 
 const agentSchema = new mongoose.Schema({
-//   email: { type: String, default: '' },
-//   userId: { type: String, default: '' },
-//   timestamp: { type: Date, default: Date.now() },
-//   isDeleted: { type: Boolean, default: false },
   name: { type: String, defualt: '' },
   title: { type: String, defualt: 'Realtor®' },
   type: { type: String, default: '' },

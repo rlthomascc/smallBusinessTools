@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-console */
@@ -6,6 +7,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const ejs = require('ejs');
+const path = require('path');
+
+// Set Storage Engine Multer
+const storage = multer.diskStorage({
+  destination: './client/dist/uploads',
+  filename(req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
+// Initial Upload
+const upload = multer({
+  storage: storage,
+  // limits: { fileSize: 1000000 },
+  // fileFilter: function (req, file, cb) {
+  //   checkFileType(file, cb);
+  // },
+}).single('image');
+
+// Check File Type
+// function checkFileType(file, cb) {
+
+// }
+
 const newUser = require('../database/newUser');
 const session = require('../database/userSession');
 
@@ -125,8 +152,16 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/agent', (req, res) => {
-  console.log(req.query, 'query');
-  console.log(req.body, 'body');
+  upload(req, res, (err) => {
+    if (err) {
+      res.render(['index', 'fullName'], {
+        msg: err,
+      });
+    }
+    console.log(req.file, 'FILE');
+    console.log(req.body, 'BODY');
+    res.send(req.file.path);
+  });
 });
 
 app.get('/verify', (req, res) => {

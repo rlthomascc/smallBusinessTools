@@ -12,23 +12,17 @@ const FormData = require('form-data');
 class Agent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedFile: null,
-    };
   }
 
-  fileSelectedHandler(e) {
-    this.setState({
-      selectedFile: e.target.files[0],
-    });
-  }
 
-  fileUploadHandler() {
-    const { selectedFile } = this.state;
+  fileUploadHandler(e) {
+    e.preventDefault();
+    const photo = e.target.portrait.files[0];
+    const fullName = e.target.fullName.value;
     const formData = new FormData();
-    formData.append('image', selectedFile, selectedFile.name);
-    console.log(formData.get('image'));
-    axios.post('/agent', { image: formData })
+    formData.append('image', photo, photo.name);
+    formData.append('fullName', fullName);
+    axios.post('/agent', formData)
       .then((res) => {
         console.log(res);
       });
@@ -36,10 +30,16 @@ class Agent extends Component {
 
   agent() {
     return (
-      <div>
-        <input type="file" onChange={this.fileSelectedHandler.bind(this)} />
-        <button className="btn btn-success" onClick={this.fileUploadHandler.bind(this)}>Upload</button>
+      <div className="container">
+        {/* <form action="/agent" method="POST" encType="multipart/form-data"> */}
+        <form onSubmit={this.fileUploadHandler.bind(this)}>
+          <input type="text" name="fullName" />
+          <input name="portrait" type="file" />
+          <input type="submit" value="Submit" />
+
+        </form>
       </div>
+
     );
   }
 
