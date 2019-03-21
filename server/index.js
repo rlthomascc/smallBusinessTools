@@ -35,6 +35,9 @@ const upload = multer({
 
 const newUser = require('../database/newUser');
 const session = require('../database/userSession');
+const newAgent = require('../database/newAgent');
+const newInvestment = require('../database/newInvestment');
+const newTransaction = require('../database/newTransaction');
 
 const app = express();
 
@@ -160,10 +163,29 @@ app.post('/agent', (req, res) => {
     }
     console.log(req.file, 'FILE');
     console.log(req.body, 'BODY');
+    newAgent.save({
+      name: req.body.fullName,
+      title: req.body.jobTitle,
+      type: req.body.typeOf,
+      split: req.body.split,
+      pricePerYear: req.body.costPerYear,
+      image: req.file.path,
+    });
     res.send(req.file.path);
   });
 });
 
+// address: { type: String, default: '' },
+//   totalPrice: { type: String, default: '' },
+//   commission: { type: String, default: '' },
+//   typeOf: { type: String, default: '' },
+//   agent: { type: String, default: '' },
+//   leadSource: { type: String, default: '' },
+//   lender: { type: String, default: '' },
+//   tcFee: { type: String, default: '' },
+//   image: { type: String, default: 'https://picsum.photos/300/300/?random' },
+//   closeDate: { type: Date, default: Date.now() },
+//   timestamp: { type: Date, default: Date.now() },
 app.post('/transaction', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
@@ -173,12 +195,27 @@ app.post('/transaction', (req, res) => {
     }
     console.log(req.file, 'FILE');
     console.log(req.body, 'BODY');
+    newTransaction.save({
+      address: req.body.address,
+      commission: req.body.price,
+      typeOf: req.body.typeOf,
+      agent: req.body.agent,
+      leadSource: req.body.leadSource,
+      lender: req.body.lender,
+      tcFee: req.body.tcFee,
+      image: req.file.path,
+      closeDate: req.body.closeDate,
+    });
     res.send(req.file.path);
   });
 });
 
 app.post('/investment', (req, res) => {
-  console.log(req.body, 'body');
+  newInvestment.save({
+    company: req.body.company,
+    costPerYear: req.body.costPerYear,
+    costPerMonth: req.body.costPerMonth,
+  });
 });
 
 app.get('/verify', (req, res) => {

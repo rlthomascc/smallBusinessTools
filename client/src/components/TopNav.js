@@ -46,10 +46,7 @@ class TopNav extends Component {
         <p className="h5 justify-content-left text-light">
           {' '}
           <b>
-            {' '}
-Welcome
-            {' '}
-            {userName.charAt(0).toUpperCase() + userName.slice(1)}
+            <img src="/uploads/image-1553127084803.jpg" width="50" className="rounded-circle" />
             {' '}
           </b>
         </p>
