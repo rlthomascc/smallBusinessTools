@@ -22,7 +22,7 @@ class Agent extends Component {
     const typeOf = e.target.typeOf.value;
     const split = e.target.split.value;
     const costPerYear = e.target.costPerYear.value;
-    console.log(photo, fullName, jobTitle, typeOf, split, costPerYear);
+    const goal = e.target.goal.value;
     const formData = new FormData();
     formData.append('image', photo, photo.name);
     formData.append('fullName', fullName);
@@ -30,6 +30,7 @@ class Agent extends Component {
     formData.append('typeOf', typeOf);
     formData.append('split', split);
     formData.append('costPerYear', costPerYear);
+    formData.append('goal', goal);
     axios.post('/agent', formData)
       .then((res) => {
         console.log(res);
@@ -60,7 +61,7 @@ class Agent extends Component {
           <div className="input-group mb-3 col-sm-4">
             <label htmlFor="split">Split</label>
             <div className="input-group-prepend">
-              <input type="text" className="form-control" name="split" placeholder="50" required />
+              <input type="number" className="form-control" name="split" placeholder="50" required />
               <span className="input-group-text" id="split">%</span>
             </div>
           </div>
@@ -68,15 +69,20 @@ class Agent extends Component {
             <label htmlFor="image">Cost Per Year</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="costPerYear">$</span>
-              <input type="text" className="form-control" name="costPerYear" placeholder="30000" />
+              <input type="number" className="form-control" name="costPerYear" placeholder="30000" />
             </div>
           </div>
           <div className="form-group">
+            <label htmlFor="goal">Transaction Goal</label>
+            <input type="number" className="form-control" id="goal" name="goal" placeholder="30" />
+          </div>
+          <div className="form-group">
             <label htmlFor="image">Image</label>
-            <input type="file" name="portrait" id="portrait" />
+            <input type="file" name="portrait" id="portrait" required />
           </div>
           <br />
           <div className="form-group text-center">
+            {/* change this.props.close to be moved to another location */}
             <input className="btn btn-primary btn-block" type="submit" value="Submit" onClick={this.props.close} />
           </div>
         </form>
