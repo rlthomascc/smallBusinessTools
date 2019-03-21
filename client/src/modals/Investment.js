@@ -36,14 +36,14 @@ class Investment extends Component {
             <label htmlFor="costPerYear">Cost Per Year</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="costPerYear">$</span>
-              <input type="text" className="form-control" name="costPerYear" placeholder="30000" />
+              <input type="number" className="form-control" name="costPerYear" placeholder="30000" />
             </div>
           </div>
           <div className="input-group mb-3 col-sm-4">
             <label htmlFor="costPerMonth">Cost Per Month</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="costPerMonth">$</span>
-              <input type="text" className="form-control" name="costPerMonth" placeholder="1000" />
+              <input type="number" className="form-control" name="costPerMonth" placeholder="1000" />
             </div>
           </div>
           <br />

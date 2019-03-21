@@ -84,13 +84,13 @@ class Transaction extends Component {
             <label htmlFor="price">Price</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="price">$</span>
-              <input type="text" className="form-control" name="price" placeholder="500000" required />
+              <input type="number" className="form-control" name="price" placeholder="500000" required />
             </div>
           </div>
           <div className="input-group mb-3 col-sm-4">
             <label htmlFor="commission">Commission</label>
             <div className="input-group-prepend">
-              <input type="text" className="form-control" name="commission" placeholder="3.5" required />
+              <input type="number" className="form-control" name="commission" placeholder="3.5" required />
               <span className="input-group-text" id="commission">%</span>
             </div>
           </div>
@@ -129,7 +129,7 @@ class Transaction extends Component {
             <label htmlFor="tcFee">TC Fee</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="tcFee">$</span>
-              <input type="text" className="form-control" name="tcFee" placeholder="5000" />
+              <input type="number" className="form-control" name="tcFee" placeholder="5000" />
             </div>
           </div>
           <div className="form-group">

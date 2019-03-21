@@ -18,9 +18,10 @@ class Homepage extends Component {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Agent</th>
+              <th scope="col">Transactions YTD</th>
+              <th scope="col">Lead</th>
+              <th scope="col">Transaction YTD</th>
             </tr>
           </thead>
           <tbody>

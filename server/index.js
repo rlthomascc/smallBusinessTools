@@ -169,6 +169,7 @@ app.post('/agent', (req, res) => {
       type: req.body.typeOf,
       split: req.body.split,
       pricePerYear: req.body.costPerYear,
+      goal: req.body.goal,
       image: req.file.path,
     });
     res.send(req.file.path);

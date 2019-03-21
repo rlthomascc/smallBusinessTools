@@ -8,7 +8,9 @@ const agentSchema = new mongoose.Schema({
   type: { type: String, default: '' },
   split: { type: String, default: '' },
   pricePerYear: { type: String, default: '' },
-  image: { type: String, default: '' },
+  image: { type: String, default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' },
+  transactions: { type: String, default: '0' },
+  goal: { type: String, default: '0' },
   timestamp: { type: Date, default: Date.now() },
 });
 
@@ -23,6 +25,7 @@ function save(e) {
     split: e.split,
     pricePerYear: e.pricePerYear,
     image: e.image,
+    goal: e.goal,
   });
   obj.save();
   console.log('Data saved to MongoDB Database');
