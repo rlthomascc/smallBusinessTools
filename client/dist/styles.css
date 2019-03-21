@@ -14,6 +14,20 @@ body {
     text-align: center;
 }
 
+#modalContainer {
+    height: 400px;
+    width: 600px;
+    padding: 20px 20px 20px 20px;
+    overflow: auto;
+}
+
+#investmentModal {
+    height: 300px;
+    width: 400px;
+    padding: 20px 20px 20px 20px;
+    overflow: auto;
+}
+
 .nav > li > a:focus, .nav > li > a:active, .nav > li > a:hover {
     background-color: white;
 }
