@@ -35,6 +35,9 @@ const upload = multer({
 
 const newUser = require('../database/newUser');
 const session = require('../database/userSession');
+const newAgent = require('../database/newAgent');
+const newInvestment = require('../database/newInvestment');
+const newTransaction = require('../database/newTransaction');
 
 const app = express();
 
@@ -160,6 +163,14 @@ app.post('/agent', (req, res) => {
     }
     console.log(req.file, 'FILE');
     console.log(req.body, 'BODY');
+    newAgent.save({
+      name: req.body.fullName,
+      title: req.body.jobTitle,
+      type: req.body.typeOf,
+      split: req.body.split,
+      pricePerYear: req.body.costPerYear,
+      image: req.file.path,
+    });
     res.send(req.file.path);
   });
 });
@@ -173,35 +184,29 @@ app.post('/transaction', (req, res) => {
     }
     console.log(req.file, 'FILE');
     console.log(req.body, 'BODY');
+    newTransaction.save({
+      address: req.body.address,
+      commission: req.body.price,
+      typeOf: req.body.typeOf,
+      agent: req.body.agent,
+      leadSource: req.body.leadSource,
+      lender: req.body.lender,
+      tcFee: req.body.tcFee,
+      image: req.file.path,
+      closeDate: req.body.closeDate,
+    });
     res.send(req.file.path);
   });
 });
 
 app.post('/investment', (req, res) => {
-  console.log(req.body, 'body');
-});
-
-app.get('/verify', (req, res) => {
-  // get the token;
-  const { token } = req.query;
-  // verify the token is one of a kind and its not deleted
-  session.userSession.find({
-    userId: token,
-    isDeleted: false,
-  }, (err, sessions) => {
-    if (sessions < 1) {
-      console.log('server error');
-      return res.status(404).send({
-        success: false,
-        message: 'Error: Server error!',
-      });
-    }
-    return res.status(200).send({
-      success: true,
-      message: 'Good Token',
-    });
+  newInvestment.save({
+    company: req.body.company,
+    costPerYear: req.body.costPerYear,
+    costPerMonth: req.body.costPerMonth,
   });
 });
+
 
 app.patch('/logout', (req, res) => {
   // get the token;
@@ -228,6 +233,28 @@ app.patch('/logout', (req, res) => {
   });
 });
 
+app.get('/verify', (req, res) => {
+  // get the token;
+  const { token } = req.query;
+  // verify the token is one of a kind and its not deleted
+  session.userSession.find({
+    userId: token,
+    isDeleted: false,
+  }, (err, sessions) => {
+    if (sessions < 1) {
+      console.log('server error');
+      return res.status(404).send({
+        success: false,
+        message: 'Error: Server error!',
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: 'Good Token',
+    });
+  });
+});
+
 app.get('/user', (req, res) => {
   const { token } = req.query;
   newUser.User.find({
@@ -244,7 +271,17 @@ app.get('/user', (req, res) => {
   });
 });
 
+app.get('/agent', (req, res) => {
+  newAgent.Agent.find({}).exec((err, agent) => {
+    res.send(agent);
+  });
+});
 
+app.get('/investment', (req, res) => {
+  newInvestment.Investment.find({}).exec((err, investment) => {
+    res.send(investment);
+  });
+});
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

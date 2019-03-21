@@ -46,17 +46,14 @@ class TopNav extends Component {
         <p className="h5 justify-content-left text-light">
           {' '}
           <b>
-            {' '}
-Welcome
-            {' '}
-            {userName.charAt(0).toUpperCase() + userName.slice(1)}
+            <img src="/uploads/image-1553127084803.jpg" width="50" className="rounded-circle" />
             {' '}
           </b>
         </p>
         {/* <input className="form-control form-control-light" type="text" placeholder="Search" aria-label="Search" /> */}
         <ul className="navbar-nav px-5">
           <li className="nav-item text-nowrap">
-            <a className="nav-link text-danger" href="#" onClick={this.props.logout.bind(this)}>
+            <a className="btn btn-outline-danger text-warning" href="#" onClick={this.props.logout.bind(this)}>
         Log Out
             </a>
           </li>

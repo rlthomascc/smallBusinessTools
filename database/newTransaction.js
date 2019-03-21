@@ -19,10 +19,17 @@ const transactionSchema = new mongoose.Schema({
 const Transaction = mongoose.model('transaction', transactionSchema);
 
 function save(e) {
-  console.log(e.userID);
   const obj = new Transaction({
-    email: e.email,
-    userId: e.userID,
+    address: e.address,
+    totalPrice: e.totalPrice,
+    commission: e.commission,
+    typeOf: e.typeOf,
+    agent: e.agent,
+    leadSource: e.leadSource,
+    lender: e.lender,
+    tcFee: e.tcFee,
+    image: e.image,
+    closeDate: e.closeDate,
   });
   obj.save();
   console.log('Data saved to MongoDB Database');

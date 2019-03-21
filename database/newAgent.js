@@ -15,10 +15,14 @@ const agentSchema = new mongoose.Schema({
 const Agent = mongoose.model('agent', agentSchema);
 
 function save(e) {
-  console.log(e.userID);
+  console.log(e, 'IN DATABASE');
   const obj = new Agent({
-    email: e.email,
-    userId: e.userID,
+    name: e.name,
+    title: e.title,
+    type: e.type,
+    split: e.split,
+    pricePerYear: e.pricePerYear,
+    image: e.image,
   });
   obj.save();
   console.log('Data saved to MongoDB Database');

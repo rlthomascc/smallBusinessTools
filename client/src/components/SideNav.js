@@ -8,6 +8,7 @@ import {
   FaUserPlus, FaHome, FaTags, FaMoneyBillAlt, FaLandmark, FaHandHoldingUsd, FaDollarSign, FaDonate, FaCog, FaChevronDown, FaCaretDown, FaAngleDown, FaAddressBook, FaKey,
 } from 'react-icons/fa';
 import Modal from 'react-awesome-modal';
+import axios from 'axios';
 import Transaction from '../modals/Transaction';
 import Agent from '../modals/Agent';
 import Investment from '../modals/Investment';
@@ -20,7 +21,31 @@ class SideNav extends Component {
       transactionModal: false,
       agentModal: false,
       investmentModal: false,
+      agents: [],
+      investment: [],
     };
+  }
+
+  componentDidMount() {
+    axios.get('/agent')
+      .then((res) => {
+        this.setState({
+          agents: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios.get('/investment')
+      .then((res) => {
+        this.setState({
+          investment: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   setActive(e) {
@@ -68,19 +93,9 @@ class SideNav extends Component {
     this.setState({ investmentModal: false });
   }
 
-  popUp() {
-    console.log('pop up');
-    return (
-      <div>
-        <p>TESTING</p>
-      </div>
-    );
-  }
-
   sideNav() {
-    const { active } = this.state;
+    const { active, agents, investment } = this.state;
     return (
-    // <nav id="sidenav" className="navbar navbar-dark col-md-2 bg-dark rounded-0">
       <div className="sidenav sidebar-sticky navbar navbar-light rounded-0 border">
 
         <ul className="nav flex-column">
@@ -99,12 +114,9 @@ class SideNav extends Component {
         Agents
             </a>
             <div className="dropdown-menu bg-light">
-              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
-              <a className="dropdown-item text-secondary" href="#/home">Item 2</a>
-              <a className="dropdown-item text-secondary" href="#/home">Item 3</a>
-              <a className="dropdown-item text-secondary" href="#/home">Item 4</a>
-              <div className="dropdown-divider" />
-              <a className="dropdown-item text-secondary" href="#/home">Seperate</a>
+              {agents.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home">{elem.name}</a>)}
+              {/* <div className="dropdown-divider" />
+              <a className="dropdown-item text-secondary" href="#/home">Seperate</a> */}
             </div>
           </li>
 
@@ -115,12 +127,7 @@ class SideNav extends Component {
         Investments
             </a>
             <div className="dropdown-menu bg-light">
-              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
-              <a className="dropdown-item text-secondary" href="#/home">Item 2</a>
-              <a className="dropdown-item text-secondary" href="#/home">Item 3</a>
-              <a className="dropdown-item text-secondary" href="#/home">Item 4</a>
-              <div className="dropdown-divider" />
-              <a className="dropdown-item text-secondary" href="#/home">Seperate</a>
+              {investment.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home">{elem.company}</a>)}
             </div>
           </li>
 
@@ -156,8 +163,8 @@ class SideNav extends Component {
           onClickAway={() => this.closeTransaction()}
         >
           <div>
-            <Transaction />
-            <a className="text-center" onClick={() => this.closeTransaction()}>Close</a>
+            <Transaction close={this.closeTransaction.bind(this)} />
+            <a className="text-center text-danger" onClick={() => this.closeTransaction()}>Close</a>
           </div>
         </Modal>
 
@@ -167,8 +174,8 @@ class SideNav extends Component {
           onClickAway={() => this.closeAgent()}
         >
           <div>
-            <Agent />
-            <a className="text-center" onClick={() => this.closeAgent()}>Close</a>
+            <Agent close={this.closeAgent.bind(this)} />
+            <a className="text-center text-danger" onClick={() => this.closeAgent()}>Close</a>
           </div>
         </Modal>
 
@@ -178,8 +185,8 @@ class SideNav extends Component {
           onClickAway={() => this.closeInvestment()}
         >
           <div>
-            <Investment />
-            <a className="text-center" onClick={() => this.closeInvestment()}>Close</a>
+            <Investment close={this.closeTransaction.bind(this)} />
+            <a className="text-center text-danger" onClick={() => this.closeInvestment()}>Close</a>
           </div>
         </Modal>
       </div>

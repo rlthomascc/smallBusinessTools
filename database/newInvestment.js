@@ -12,10 +12,10 @@ const investmentSchema = new mongoose.Schema({
 const Investment = mongoose.model('investment', investmentSchema);
 
 function save(e) {
-  console.log(e.userID);
   const obj = new Investment({
-    email: e.email,
-    userId: e.userID,
+    company: e.company,
+    priceYearly: e.costPerYear,
+    priceMonthly: e.costPerMonth,
   });
   obj.save();
   console.log('Data saved to MongoDB Database');
