@@ -65,9 +65,29 @@ class Transaction extends Component {
     formData.append('lender', lender);
     formData.append('tcFee', tcFee);
     formData.append('closeDate', closeDate);
+
     axios.post('/transaction', formData)
       .then((res) => {
         console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios.patch('/agent', { agent })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios.patch('/investment', { leadSource })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 

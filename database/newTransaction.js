@@ -4,13 +4,13 @@ mongoose.connect('mongodb://localhost/smallBusinessTools/newTransaction');
 
 const transactionSchema = new mongoose.Schema({
   address: { type: String, default: '' },
-  totalPrice: { type: String, default: '' },
-  commission: { type: String, default: '' },
+  totalPrice: { type: Number, default: 0 },
+  commission: { type: Number, default: 0 },
   typeOf: { type: String, default: '' },
   agent: { type: String, default: '' },
   leadSource: { type: String, default: '' },
   lender: { type: String, default: '' },
-  tcFee: { type: String, default: '' },
+  tcFee: { type: Number, default: 0 },
   image: { type: String, default: 'https://picsum.photos/300/300/?random' },
   closeDate: { type: Date, default: Date.now() },
   timestamp: { type: Date, default: Date.now() },
