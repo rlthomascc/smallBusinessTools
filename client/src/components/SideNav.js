@@ -114,6 +114,7 @@ class SideNav extends Component {
         Agents
             </a>
             <div className="dropdown-menu bg-light">
+              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
               {agents.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home">{elem.name}</a>)}
               {/* <div className="dropdown-divider" />
               <a className="dropdown-item text-secondary" href="#/home">Seperate</a> */}
@@ -127,6 +128,7 @@ class SideNav extends Component {
         Investments
             </a>
             <div className="dropdown-menu bg-light">
+              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
               {investment.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home">{elem.company}</a>)}
             </div>
           </li>

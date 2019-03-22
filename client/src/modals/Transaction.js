@@ -74,7 +74,7 @@ class Transaction extends Component {
         console.log(err);
       });
 
-    axios.patch('/agent', { agent })
+    axios.patch('/agent', { agent, price })
       .then((res) => {
         console.log(res);
       })
@@ -82,7 +82,7 @@ class Transaction extends Component {
         console.log(err);
       });
 
-    axios.patch('/investment', { leadSource })
+    axios.patch('/investment', { leadSource, price })
       .then((res) => {
         console.log(res);
       })

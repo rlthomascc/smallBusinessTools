@@ -7,6 +7,7 @@ const investmentSchema = new mongoose.Schema({
   priceYearly: { type: Number, default: 0 },
   priceMonthly: { type: Number, default: 0 },
   transactions: { type: Number, default: 0 },
+  grossIncome: { type: Number, default: 0 },
   timestamp: { type: Date, default: Date.now() },
 });
 
