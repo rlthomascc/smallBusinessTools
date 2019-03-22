@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/smallBusinessTools/newInvestment');
 
 const investmentSchema = new mongoose.Schema({
-  company: { type: String, default: '' },
-  priceYearly: { type: String, default: '' },
-  priceMonthly: { type: String, default: '' },
+  company: { unique: true, type: String, default: '' },
+  priceYearly: { type: Number, default: 0 },
+  priceMonthly: { type: Number, default: 0 },
+  transactions: { type: Number, default: 0 },
   timestamp: { type: Date, default: Date.now() },
 });
 

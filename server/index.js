@@ -161,10 +161,11 @@ app.post('/agent', (req, res) => {
         msg: err,
       });
     }
+    const name = req.body.fullName.trimEnd();
     console.log(req.file, 'FILE');
     console.log(req.body, 'BODY');
     newAgent.save({
-      name: req.body.fullName,
+      name: name,
       title: req.body.jobTitle,
       type: req.body.typeOf,
       split: req.body.split,
@@ -183,8 +184,6 @@ app.post('/transaction', (req, res) => {
         msg: err,
       });
     }
-    console.log(req.file, 'FILE');
-    console.log(req.body, 'BODY');
     newTransaction.save({
       address: req.body.address,
       commission: req.body.price,
@@ -201,8 +200,9 @@ app.post('/transaction', (req, res) => {
 });
 
 app.post('/investment', (req, res) => {
+  const company = req.body.company.trimEnd();
   newInvestment.save({
-    company: req.body.company,
+    company: company,
     costPerYear: req.body.costPerYear,
     costPerMonth: req.body.costPerMonth,
   });
@@ -231,6 +231,40 @@ app.patch('/logout', (req, res) => {
       success: true,
       message: 'Updated Token',
     });
+  });
+});
+
+app.patch('/agent', (req, res) => {
+  const { agent } = req.body;
+  console.log(agent, 'agent');
+  newAgent.Agent.findOneAndUpdate({
+    name: agent,
+  }, {
+    $inc: {
+      transactions: 1,
+    },
+  }, null, (err, agents) => {
+    if (agents.length > 1) {
+      res.status(200).send('Success');
+    }
+    res.status(400).send('Server Error');
+  });
+});
+
+app.patch('/investment', (req, res) => {
+  const { leadSource } = req.body;
+  newInvestment.Investment.findOneAndUpdate({
+    company: leadSource,
+  }, {
+    $inc: {
+      transactions: 1,
+    },
+  }, null, (err, investments) => {
+    console.log(investments, 'patch');
+    // if (investments.length > 1) {
+    //   res.status(200).send('Success');
+    // }
+    // res.status(400).send('Server Error');
   });
 });
 
@@ -273,13 +307,13 @@ app.get('/user', (req, res) => {
 });
 
 app.get('/agent', (req, res) => {
-  newAgent.Agent.find({}).exec((err, agent) => {
+  newAgent.Agent.find({}).sort({ name: 1 }).exec((err, agent) => {
     res.send(agent);
   });
 });
 
 app.get('/investment', (req, res) => {
-  newInvestment.Investment.find({}).exec((err, investment) => {
+  newInvestment.Investment.find({}).sort({ company: 1 }).exec((err, investment) => {
     res.send(investment);
   });
 });
