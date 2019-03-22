@@ -11,6 +11,7 @@ const agentSchema = new mongoose.Schema({
   image: { type: String, default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' },
   transactions: { type: Number, default: 0 },
   goal: { type: Number, default: 0 },
+  grossIncome: { type: Number, default: 0 },
   timestamp: { type: Date, default: Date.now() },
 });
 

@@ -235,13 +235,14 @@ app.patch('/logout', (req, res) => {
 });
 
 app.patch('/agent', (req, res) => {
-  const { agent } = req.body;
+  const { agent, price } = req.body;
   console.log(agent, 'agent');
   newAgent.Agent.findOneAndUpdate({
     name: agent,
   }, {
     $inc: {
       transactions: 1,
+      grossIncome: price,
     },
   }, null, (err, agents) => {
     if (agents.length > 1) {
@@ -252,12 +253,13 @@ app.patch('/agent', (req, res) => {
 });
 
 app.patch('/investment', (req, res) => {
-  const { leadSource } = req.body;
+  const { leadSource, price } = req.body;
   newInvestment.Investment.findOneAndUpdate({
     company: leadSource,
   }, {
     $inc: {
       transactions: 1,
+      grossIncome: price,
     },
   }, null, (err, investments) => {
     console.log(investments, 'patch');
