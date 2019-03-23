@@ -68,51 +68,39 @@ class Homepage extends Component {
         let dec = 0;
         agents.map((agent) => {
           if (agent.timestamp.includes('Jan')) {
-            console.log(agent.transactions);
             jan += agent.transactions;
           }
           if (agent.timestamp.includes('Feb')) {
-            console.log(agent.transactions);
             feb += agent.transactions;
           }
           if (agent.timestamp.includes('Mar')) {
-            console.log(agent.transactions);
             mar += agent.transactions;
           }
           if (agent.timestamp.includes('Apr')) {
-            console.log(agent.transactions);
             apr += agent.transactions;
           }
           if (agent.timestamp.includes('May')) {
-            console.log(agent.transactions);
             may += agent.transactions;
           }
           if (agent.timestamp.includes('Jun')) {
-            console.log(agent.transactions);
             jun += agent.transactions;
           }
           if (agent.timestamp.includes('Jul')) {
-            console.log(agent.transactions);
             jul += agent.transactions;
           }
           if (agent.timestamp.includes('Aug')) {
-            console.log(agent.transactions);
             aug += agent.transactions;
           }
           if (agent.timestamp.includes('Sep')) {
-            console.log(agent.transactions);
             sep += agent.transactions;
           }
           if (agent.timestamp.includes('Oct')) {
-            console.log(agent.transactions);
             oct += agent.transactions;
           }
           if (agent.timestamp.includes('Nov')) {
-            console.log(agent.transactions);
             nov += agent.transactions;
           }
           if (agent.timestamp.includes('Dec')) {
-            console.log(agent.transactions);
             dec += agent.transactions;
           }
         });
@@ -128,7 +116,6 @@ class Homepage extends Component {
         data[9] = oct;
         data[10] = nov;
         data[11] = dec;
-        console.log(data);
         this.setState({
           chartData: data,
         });
@@ -142,7 +129,7 @@ class Homepage extends Component {
     const totalGoals = () => agents.reduce((total, goals) => total + goals.goal, 0);
     const totalInvested = () => leads.reduce((total, gross) => total + gross.priceYearly, 0);
     return (
-      <div id="total-container" className="col-lg-3 bg-light border border-default alert alert-light container">
+      <div id="total-container" className="bg-light border border-default alert alert-light container">
         <div className="row">
 
           <div id="lefttop" className="col-sm border-bottom border-default text-center">
@@ -228,17 +215,27 @@ class Homepage extends Component {
     const { chartData } = this.state;
     return (
       <div id="homePage">
-        <DashboardChart chartData={chartData} />
-        {this.totalTable()}
-        {this.agentTable()}
-        {this.leadTable()}
+        <div className="topFlex">
+          <div className="chart">
+            <DashboardChart chartData={chartData} />
+          </div>
+          <div className="totalsTable">
+            <div className="totalsafety">
+              {this.totalTable()}
+            </div>
+          </div>
+        </div>
+
+        <div className="tableFlex">
+          {this.agentTable()}
+          {this.leadTable()}
+        </div>
       </div>
     );
   }
 
 
   render() {
-    console.log(this.state.chartData);
     return (
       this.homePage()
     );

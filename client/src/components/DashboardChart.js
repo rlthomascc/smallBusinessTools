@@ -15,6 +15,7 @@ class DashboardChart extends Component {
     const { chartData } = this.props;
     const sampleData = {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      legend: false,
       datasets: [
         {
           label: 'Total Transactions',
@@ -25,21 +26,23 @@ class DashboardChart extends Component {
           lineTension: 0,
         },
       ],
-      options: {
-        legend: {
-          hidden: true,
-        },
-      },
     };
 
     return (
       <div>
         <Line
           data={sampleData}
-          height={400}
+          height={350}
           options={{
-	          maintainAspectRatio: false,
-          }}
+            maintainAspectRatio: false,
+            legend: {
+              display: false,
+            },
+            tooltips: {
+              enabled: false,
+            },
+          }
+          }
         />
       </div>
 
