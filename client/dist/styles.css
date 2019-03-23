@@ -21,14 +21,10 @@ body {
     overflow: auto;
 }
 
-#total-container {
-    padding-top: 20px;
-    width: 200px;
-}
 
-.table {
-    width: 350px;
-}
+/* .table {
+    width: 300px;
+} */
 
 
 #investmentModal {
@@ -103,8 +99,48 @@ body {
   }
 
   #homePage {
-      order: 3;
       padding-left: 260px;
+  }
+
+  #total-container {
+    height: 300px;
+    width: 150px;
+    margin-left: 30px;
+}
+
+  .topFlex {
+      display: flex;
+      align-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding-bottom: 30px;
+  }
+
+
+  .chart {
+      /* display: flex; */
+      
+      flex-basis: 80%;
+      order: 1;
+    }
+    
+    .totalsTable {
+      display: flex;
+      padding-top: 20px;
+      order: 2;
+      flex-basis: 20%;
+      
+  }
+
+
+  .tableFlex {
+      display: flex;
+      align-content: stretch;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      
   }
 
   #icon {

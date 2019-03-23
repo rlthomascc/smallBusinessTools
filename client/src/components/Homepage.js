@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
@@ -11,6 +12,7 @@ class Homepage extends Component {
     this.state = {
       agents: [],
       leads: [],
+      chartData: [],
     };
   }
 
@@ -18,7 +20,6 @@ class Homepage extends Component {
   componentWillMount() {
     Axios.get('/agent')
       .then((res) => {
-        console.log(res.data);
         this.setState({
           agents: res.data,
         });
@@ -29,13 +30,95 @@ class Homepage extends Component {
 
     Axios.get('/investment')
       .then((res) => {
-        console.log(res.data);
         this.setState({
           leads: res.data,
         });
       })
       .catch((err) => {
         console.log(err);
+      })
+      .then(() => {
+        // const { agents } = this.state;
+        const agents = [
+          { timestamp: 'Jan', transactions: 1 },
+          { timestamp: 'Fed', transactions: 5 },
+          { timestamp: 'Mar', transactions: 2 },
+          { timestamp: 'Apr', transactions: 10 },
+          { timestamp: 'May', transactions: 3 },
+          { timestamp: 'Jun', transactions: 1 },
+          { timestamp: 'Jul', transactions: 12 },
+          { timestamp: 'Aug', transactions: 3 },
+          { timestamp: 'Sep', transactions: 6 },
+          { timestamp: 'Oct', transactions: 2 },
+          { timestamp: 'Nov', transactions: 12 },
+          { timestamp: 'Dec', transactions: 0 },
+        ];
+        let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let jan = 0;
+        let feb = 0;
+        let mar = 0;
+        let apr = 0;
+        let may = 0;
+        let jun = 0;
+        let jul = 0;
+        let aug = 0;
+        let sep = 0;
+        let oct = 0;
+        let nov = 0;
+        let dec = 0;
+        agents.map((agent) => {
+          if (agent.timestamp.includes('Jan')) {
+            jan += agent.transactions;
+          }
+          if (agent.timestamp.includes('Feb')) {
+            feb += agent.transactions;
+          }
+          if (agent.timestamp.includes('Mar')) {
+            mar += agent.transactions;
+          }
+          if (agent.timestamp.includes('Apr')) {
+            apr += agent.transactions;
+          }
+          if (agent.timestamp.includes('May')) {
+            may += agent.transactions;
+          }
+          if (agent.timestamp.includes('Jun')) {
+            jun += agent.transactions;
+          }
+          if (agent.timestamp.includes('Jul')) {
+            jul += agent.transactions;
+          }
+          if (agent.timestamp.includes('Aug')) {
+            aug += agent.transactions;
+          }
+          if (agent.timestamp.includes('Sep')) {
+            sep += agent.transactions;
+          }
+          if (agent.timestamp.includes('Oct')) {
+            oct += agent.transactions;
+          }
+          if (agent.timestamp.includes('Nov')) {
+            nov += agent.transactions;
+          }
+          if (agent.timestamp.includes('Dec')) {
+            dec += agent.transactions;
+          }
+        });
+        data[0] = jan;
+        data[1] = feb;
+        data[2] = mar;
+        data[3] = apr;
+        data[4] = may;
+        data[5] = jun;
+        data[6] = jul;
+        data[7] = aug;
+        data[8] = sep;
+        data[9] = oct;
+        data[10] = nov;
+        data[11] = dec;
+        this.setState({
+          chartData: data,
+        });
       });
   }
 
@@ -46,7 +129,7 @@ class Homepage extends Component {
     const totalGoals = () => agents.reduce((total, goals) => total + goals.goal, 0);
     const totalInvested = () => leads.reduce((total, gross) => total + gross.priceYearly, 0);
     return (
-      <div id="total-container" className="col-lg-3 bg-light border border-default alert alert-light container">
+      <div id="total-container" className="bg-light border border-default alert alert-light container">
         <div className="row">
 
           <div id="lefttop" className="col-sm border-bottom border-default text-center">
@@ -129,12 +212,24 @@ class Homepage extends Component {
   }
 
   homePage() {
+    const { chartData } = this.state;
     return (
       <div id="homePage">
-        <DashboardChart />
-        {this.totalTable()}
-        {this.agentTable()}
-        {this.leadTable()}
+        <div className="topFlex">
+          <div className="chart">
+            <DashboardChart chartData={chartData} />
+          </div>
+          <div className="totalsTable">
+            <div className="totalsafety">
+              {this.totalTable()}
+            </div>
+          </div>
+        </div>
+
+        <div className="tableFlex">
+          {this.agentTable()}
+          {this.leadTable()}
+        </div>
       </div>
     );
   }

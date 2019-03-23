@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/smallBusinessTools/newAgent');
 
+
+const date = new Date();
+const newDate = date.toDateString();
 const agentSchema = new mongoose.Schema({
   name: { unique: true, type: String, default: '' },
   title: { type: String, default: 'Realtor®' },
@@ -12,7 +15,7 @@ const agentSchema = new mongoose.Schema({
   transactions: { type: Number, default: 0 },
   goal: { type: Number, default: 0 },
   grossIncome: { type: Number, default: 0 },
-  timestamp: { type: Date, default: Date.now() },
+  timestamp: { type: String, default: newDate },
 });
 
 const Agent = mongoose.model('agent', agentSchema);

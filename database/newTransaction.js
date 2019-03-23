@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
+
 mongoose.connect('mongodb://localhost/smallBusinessTools/newTransaction');
 
+
+const date = new Date();
+const newDate = date.toDateString();
 const transactionSchema = new mongoose.Schema({
   address: { type: String, default: '' },
   totalPrice: { type: Number, default: 0 },
@@ -13,7 +17,7 @@ const transactionSchema = new mongoose.Schema({
   tcFee: { type: Number, default: 0 },
   image: { type: String, default: 'https://picsum.photos/300/300/?random' },
   closeDate: { type: Date, default: Date.now() },
-  timestamp: { type: Date, default: Date.now() },
+  timestamp: { type: String, default: newDate },
 });
 
 const Transaction = mongoose.model('transaction', transactionSchema);
