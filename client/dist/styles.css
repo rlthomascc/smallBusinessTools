@@ -21,12 +21,6 @@ body {
     overflow: auto;
 }
 
-
-/* .table {
-    width: 300px;
-} */
-
-
 #investmentModal {
     height: 300px;
     width: 400px;
@@ -104,8 +98,8 @@ body {
 
   #total-container {
     height: 300px;
-    width: 150px;
-    margin-left: 30px;
+    width: 175px;
+    margin-left: 20px;
 }
 
   .topFlex {
@@ -120,14 +114,12 @@ body {
 
   .chart {
       /* display: flex; */
-      
       flex-basis: 80%;
       order: 1;
     }
     
     .totalsTable {
       display: flex;
-      padding-top: 20px;
       order: 2;
       flex-basis: 20%;
       

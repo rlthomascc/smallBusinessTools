@@ -133,7 +133,7 @@ class Homepage extends Component {
         <div className="row">
 
           <div id="lefttop" className="col-sm border-bottom border-default text-center">
-            <p id="headingComp" className="font-weight-bold text-secondary">Total Transactions</p>
+            <p id="headingComp" className="font-weight-bold text-secondary">Transactions YTD</p>
             <br />
             <p className={totalTransactions() < totalGoals() ? 'h4 text-danger font-weight-bold' : 'h4 text-success font-weight-bold'}>{totalTransactions()}</p>
             <br />
@@ -141,7 +141,7 @@ class Homepage extends Component {
 
           <div id="righttop" className="col-sm text-center">
             <br />
-            <p id="headingComp" className="font-weight-bold text-secondary">Total Gross</p>
+            <p id="headingComp" className="font-weight-bold text-secondary">Total Gross (YTD)</p>
             <br />
             <p className={totalGross() < totalInvested() ? 'h4 text-danger font-weight-bold' : 'h4 text-success font-weight-bold'}>
               $
