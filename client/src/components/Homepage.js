@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
@@ -11,6 +12,7 @@ class Homepage extends Component {
     this.state = {
       agents: [],
       leads: [],
+      chartData: [],
     };
   }
 
@@ -18,7 +20,6 @@ class Homepage extends Component {
   componentWillMount() {
     Axios.get('/agent')
       .then((res) => {
-        console.log(res.data);
         this.setState({
           agents: res.data,
         });
@@ -29,13 +30,108 @@ class Homepage extends Component {
 
     Axios.get('/investment')
       .then((res) => {
-        console.log(res.data);
         this.setState({
           leads: res.data,
         });
       })
       .catch((err) => {
         console.log(err);
+      })
+      .then(() => {
+        // const { agents } = this.state;
+        const agents = [
+          { timestamp: 'Jan', transactions: 1 },
+          { timestamp: 'Fed', transactions: 5 },
+          { timestamp: 'Mar', transactions: 2 },
+          { timestamp: 'Apr', transactions: 10 },
+          { timestamp: 'May', transactions: 3 },
+          { timestamp: 'Jun', transactions: 1 },
+          { timestamp: 'Jul', transactions: 12 },
+          { timestamp: 'Aug', transactions: 3 },
+          { timestamp: 'Sep', transactions: 6 },
+          { timestamp: 'Oct', transactions: 2 },
+          { timestamp: 'Nov', transactions: 12 },
+          { timestamp: 'Dec', transactions: 0 },
+        ];
+        let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let jan = 0;
+        let feb = 0;
+        let mar = 0;
+        let apr = 0;
+        let may = 0;
+        let jun = 0;
+        let jul = 0;
+        let aug = 0;
+        let sep = 0;
+        let oct = 0;
+        let nov = 0;
+        let dec = 0;
+        agents.map((agent) => {
+          if (agent.timestamp.includes('Jan')) {
+            console.log(agent.transactions);
+            jan += agent.transactions;
+          }
+          if (agent.timestamp.includes('Feb')) {
+            console.log(agent.transactions);
+            feb += agent.transactions;
+          }
+          if (agent.timestamp.includes('Mar')) {
+            console.log(agent.transactions);
+            mar += agent.transactions;
+          }
+          if (agent.timestamp.includes('Apr')) {
+            console.log(agent.transactions);
+            apr += agent.transactions;
+          }
+          if (agent.timestamp.includes('May')) {
+            console.log(agent.transactions);
+            may += agent.transactions;
+          }
+          if (agent.timestamp.includes('Jun')) {
+            console.log(agent.transactions);
+            jun += agent.transactions;
+          }
+          if (agent.timestamp.includes('Jul')) {
+            console.log(agent.transactions);
+            jul += agent.transactions;
+          }
+          if (agent.timestamp.includes('Aug')) {
+            console.log(agent.transactions);
+            aug += agent.transactions;
+          }
+          if (agent.timestamp.includes('Sep')) {
+            console.log(agent.transactions);
+            sep += agent.transactions;
+          }
+          if (agent.timestamp.includes('Oct')) {
+            console.log(agent.transactions);
+            oct += agent.transactions;
+          }
+          if (agent.timestamp.includes('Nov')) {
+            console.log(agent.transactions);
+            nov += agent.transactions;
+          }
+          if (agent.timestamp.includes('Dec')) {
+            console.log(agent.transactions);
+            dec += agent.transactions;
+          }
+        });
+        data[0] = jan;
+        data[1] = feb;
+        data[2] = mar;
+        data[3] = apr;
+        data[4] = may;
+        data[5] = jun;
+        data[6] = jul;
+        data[7] = aug;
+        data[8] = sep;
+        data[9] = oct;
+        data[10] = nov;
+        data[11] = dec;
+        console.log(data);
+        this.setState({
+          chartData: data,
+        });
       });
   }
 
@@ -129,9 +225,10 @@ class Homepage extends Component {
   }
 
   homePage() {
+    const { chartData } = this.state;
     return (
       <div id="homePage">
-        <DashboardChart />
+        <DashboardChart chartData={chartData} />
         {this.totalTable()}
         {this.agentTable()}
         {this.leadTable()}
@@ -141,6 +238,7 @@ class Homepage extends Component {
 
 
   render() {
+    console.log(this.state.chartData);
     return (
       this.homePage()
     );

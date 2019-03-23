@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-useless-constructor */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable class-methods-use-this */
@@ -11,21 +12,26 @@ class DashboardChart extends Component {
   }
 
   chart() {
+    const { chartData } = this.props;
     const sampleData = {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [
         {
-          label: 'Test',
-          data: [
-            2, 4, 5, 6, 7, 8,
-          ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 90, 100, 0)',
-          ],
+          label: 'Total Transactions',
+          data: chartData,
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          borderColor: 'rgba(0, 36, 245)',
+          pointBackgroundColor: 'rgba(0, 36, 245)',
+          lineTension: 0,
         },
       ],
+      options: {
+        legend: {
+          hidden: true,
+        },
+      },
     };
+
     return (
       <div>
         <Line
