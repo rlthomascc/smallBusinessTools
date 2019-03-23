@@ -14,6 +14,7 @@ const investmentSchema = new mongoose.Schema({
 const Investment = mongoose.model('investment', investmentSchema);
 
 function save(e) {
+  console.log(e, 'im here');
   const obj = new Investment({
     company: e.company,
     priceYearly: e.costPerYear,

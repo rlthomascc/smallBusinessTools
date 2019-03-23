@@ -21,6 +21,16 @@ body {
     overflow: auto;
 }
 
+#total-container {
+    padding-top: 20px;
+    width: 200px;
+}
+
+.table {
+    width: 350px;
+}
+
+
 #investmentModal {
     height: 300px;
     width: 400px;
