@@ -173,7 +173,7 @@ class Homepage extends Component {
               <tr>
                 <th scope="row">{i + 1}</th>
                 <td><b><a className="text-dark" href="#/home">{elem.name}</a></b></td>
-                <td className={elem.goal === elem.transactions ? 'text-warning' : elem.goal > elem.transactions ? 'text-danger' : 'text-success'}><b>{elem.transactions}</b></td>
+                <td key={i} className={elem.goal === elem.transactions ? 'text-warning' : elem.goal > elem.transactions ? 'text-danger' : 'text-success'}><b>{elem.transactions}</b></td>
                 <td><b>{`$${elem.grossIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</b></td>
               </tr>
             ))}
@@ -200,9 +200,9 @@ class Homepage extends Component {
             {leads.map((elem, i) => (
               <tr>
                 <th scope="row">{i + 1}</th>
-                <td><a className="text-dark" href="#/home"><b>{elem.company}</b></a></td>
+                <td><a key={i} className="text-dark" href="#/home"><b>{elem.company}</b></a></td>
                 <td><b>{elem.transactions}</b></td>
-                <td className={elem.priceYearly === elem.grossIncome ? 'text-warning' : elem.priceYearly > elem.grossIncome ? 'text-danger' : 'text-success'}><b>{`$${elem.grossIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</b></td>
+                <td key={i} className={elem.priceYearly === elem.grossIncome ? 'text-warning' : elem.priceYearly > elem.grossIncome ? 'text-danger' : 'text-success'}><b>{`$${elem.grossIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</b></td>
               </tr>
             ))}
           </tbody>

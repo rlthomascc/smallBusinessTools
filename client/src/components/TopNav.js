@@ -12,7 +12,7 @@ class TopNav extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { token } = this.props;
     $.ajax({
       method: 'GET',

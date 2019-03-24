@@ -30,7 +30,7 @@ class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const token = getFromStorage('token');
     // const token = this.props.location.state.token
     if (token.length > 1) {
