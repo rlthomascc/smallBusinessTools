@@ -184,9 +184,11 @@ app.post('/transaction', (req, res) => {
         msg: err,
       });
     }
+    console.log(req.body);
     newTransaction.save({
       address: req.body.address,
-      commission: req.body.price,
+      price: req.body.price,
+      commission: req.body.commission,
       typeOf: req.body.typeOf,
       agent: req.body.agent,
       leadSource: req.body.leadSource,
@@ -236,7 +238,7 @@ app.patch('/logout', (req, res) => {
 
 app.patch('/agent', (req, res) => {
   const { agent, price } = req.body;
-  console.log(agent, 'agent');
+  console.log(agent, 'agent in patch');
   newAgent.Agent.findOneAndUpdate({
     name: agent,
   }, {
@@ -319,6 +321,13 @@ app.get('/investment', (req, res) => {
     res.send(investment);
   });
 });
+
+app.get('/transaction', (req, res) => {
+  newTransaction.Transaction.find({}).sort({ company: 1 }).exec((err, transaction) => {
+    res.send(transaction);
+  });
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

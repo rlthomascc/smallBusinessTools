@@ -164,7 +164,7 @@ class SideNav extends Component {
           effect="fadeInUp"
           onClickAway={() => this.closeTransaction()}
         >
-          <div>
+          <div id="Modal">
             <Transaction close={this.closeTransaction.bind(this)} />
             <a className="text-center text-danger" onClick={() => this.closeTransaction()}>Close</a>
           </div>
@@ -175,7 +175,7 @@ class SideNav extends Component {
           effect="fadeInUp"
           onClickAway={() => this.closeAgent()}
         >
-          <div>
+          <div id="Modal">
             <Agent close={this.closeAgent.bind(this)} />
             <a className="text-center text-danger" onClick={() => this.closeAgent()}>Close</a>
           </div>
@@ -186,7 +186,7 @@ class SideNav extends Component {
           effect="fadeInUp"
           onClickAway={() => this.closeInvestment()}
         >
-          <div>
+          <div id="Modal">
             <Investment close={this.closeTransaction.bind(this)} />
             <a className="text-center text-danger" onClick={() => this.closeInvestment()}>Close</a>
           </div>
