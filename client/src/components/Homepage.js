@@ -158,7 +158,7 @@ class Homepage extends Component {
   agentTable() {
     const { agents } = this.state;
     return (
-      <div className="container">
+      <div id="table-container" className="container">
         <table className="table table-striped border">
           <thead>
             <tr>
@@ -172,7 +172,7 @@ class Homepage extends Component {
             {agents.map((elem, i) => (
               <tr>
                 <th scope="row">{i + 1}</th>
-                <td><b>{elem.name}</b></td>
+                <td><b><a className="text-dark" href="#/home">{elem.name}</a></b></td>
                 <td className={elem.goal === elem.transactions ? 'text-warning' : elem.goal > elem.transactions ? 'text-danger' : 'text-success'}><b>{elem.transactions}</b></td>
                 <td><b>{`$${elem.grossIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</b></td>
               </tr>
@@ -186,7 +186,7 @@ class Homepage extends Component {
   leadTable() {
     const { leads } = this.state;
     return (
-      <div className="container">
+      <div id="table-container" className="container">
         <table className="table table-striped border">
           <thead>
             <tr>
@@ -200,7 +200,7 @@ class Homepage extends Component {
             {leads.map((elem, i) => (
               <tr>
                 <th scope="row">{i + 1}</th>
-                <td><b>{elem.company}</b></td>
+                <td><a className="text-dark" href="#/home"><b>{elem.company}</b></a></td>
                 <td><b>{elem.transactions}</b></td>
                 <td className={elem.priceYearly === elem.grossIncome ? 'text-warning' : elem.priceYearly > elem.grossIncome ? 'text-danger' : 'text-success'}><b>{`$${elem.grossIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}</b></td>
               </tr>

@@ -304,7 +304,7 @@ app.get('/user', (req, res) => {
         message: 'Error: Server error!',
       });
     }
-    return res.send(users[0]._doc.username);
+    return res.send(users[0]);
   });
 });
 

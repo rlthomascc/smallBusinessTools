@@ -39,25 +39,22 @@ class TopNav extends Component {
       <nav id="topnav" className="navbar navbar-dark bg-dark rounded-0 border border-secondary">
         <ul className="navbar-nav px-5 ml-auto text-light">
           <li className="nav-item text-nowrap">
-        Logo Here
+      Logo Here
           </li>
 
         </ul>
-        <p className="h5 justify-content-left text-light">
-          {' '}
-          <b>
-            <img src="/uploads/image-1553127084803.jpg" width="50" className="rounded-circle" />
+        <li className="photo-dropdown nav-item dropdown">
+          <a className="nav-link dropdown-toggle text-white" href="#/home" id="photoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src={userName.image} width="50" className="rounded-circle" />
             {' '}
-          </b>
-        </p>
-        {/* <input className="form-control form-control-light" type="text" placeholder="Search" aria-label="Search" /> */}
-        <ul className="navbar-nav px-5">
-          <li className="nav-item text-nowrap">
-            <a className="btn btn-outline-danger text-warning" href="#" onClick={this.props.logout.bind(this)}>
-        Log Out
-            </a>
-          </li>
-        </ul>
+            {' '}
+            {userName.username}
+          </a>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a className="dropdown-item" href="#/home">My Profile</a>
+            <a className="dropdown-item" href="#/login" onClick={this.props.logout.bind(this)}>Log Out</a>
+          </div>
+        </li>
       </nav>
     );
   }
