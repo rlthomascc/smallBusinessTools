@@ -41,7 +41,6 @@ body {
     height: 80px;
 }
 
-
 .sidenav {
     background-color: #f8f9fa;
     height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -132,9 +131,16 @@ body {
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: space-around;
-      
   }
 
   #icon {
       padding-right: 3px;
+  }
+
+  .photo-dropdown {
+      margin-top: -20px;
+  }
+
+  #table-container {
+    z-index: 2;
   }
