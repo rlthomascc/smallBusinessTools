@@ -25,7 +25,7 @@ const Transaction = mongoose.model('transaction', transactionSchema);
 function save(e) {
   const obj = new Transaction({
     address: e.address,
-    totalPrice: e.totalPrice,
+    totalPrice: e.price,
     commission: e.commission,
     typeOf: e.typeOf,
     agent: e.agent,

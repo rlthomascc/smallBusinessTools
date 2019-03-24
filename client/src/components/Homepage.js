@@ -3,8 +3,9 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import Axios from 'axios';
-import DashboardChart from './DashboardChart';
-
+import DashboardChart from '../charts/DashboardChart';
+import AgentPage from './AgentPage';
+import AgentChart from '../charts/AgentChart';
 
 class Homepage extends Component {
   constructor(props) {

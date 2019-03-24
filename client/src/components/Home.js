@@ -13,9 +13,11 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import TopNav from './TopNav';
 import SideNav from './SideNav';
 import Homepage from './Homepage';
+import AgentPage from './AgentPage';
 import { getFromStorage } from '../../utils/storage';
 
 
@@ -27,6 +29,9 @@ class Home extends Component {
       token: '',
       signUpError: '',
       signInError: '',
+      agents: [],
+      leads: [],
+      transactions: [],
     };
   }
 
@@ -56,6 +61,24 @@ class Home extends Component {
         },
       });
     }
+    axios.get('/agent')
+      .then((res) => {
+        this.setState({
+          agents: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios.get('/transaction')
+      .then((res) => {
+        this.setState({
+          transactions: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   logout() {
@@ -80,7 +103,9 @@ class Home extends Component {
   }
 
   renderView() {
-    const { isLoading, token } = this.state;
+    const {
+      isLoading, token, agents, leads, transactions,
+    } = this.state;
     if (isLoading) {
       return (
         <div>
@@ -94,9 +119,10 @@ class Home extends Component {
     if (token) {
       return (
         <div id="container-fluid">
-          <TopNav logout={this.logout} token={token} />
           <SideNav logout={this.logout} />
-          <Homepage className="text-center" />
+          <TopNav logout={this.logout} token={token} />
+          {/* <Homepage className="text-center" /> */}
+          <AgentPage agents={agents} transactions={transactions} />
         </div>
       );
     }

@@ -50,9 +50,9 @@ class TopNav extends Component {
             {' '}
             {userName.username}
           </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a className="dropdown-item" href="#/home">My Profile</a>
-            <a className="dropdown-item" href="#/login" onClick={this.props.logout.bind(this)}>Log Out</a>
+          <div id="topnav-drop" className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a id="topnav-drop" className="dropdown-item" href="#/home">My Profile</a>
+            <a id="topnav-drop" className="dropdown-item" href="#/login" onClick={this.props.logout.bind(this)}>Log Out</a>
           </div>
         </li>
       </nav>

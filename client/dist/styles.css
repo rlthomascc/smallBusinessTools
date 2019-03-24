@@ -16,6 +16,7 @@ body {
 
 #modalContainer {
     height: 550px;
+    z-index: 10;
     width: 600px;
     padding: 20px 20px 20px 20px;
     overflow: auto;
@@ -23,6 +24,7 @@ body {
 
 #investmentModal {
     height: 300px;
+    z-index: 10;
     width: 400px;
     padding: 20px 20px 20px 20px;
     overflow: auto;
@@ -66,6 +68,11 @@ body {
   .sidenav a:hover {
     color: #f1f1f1;
   }
+
+  #topnav-drop a:hover {
+    background-color: #f1f2f2;
+    color: #FF1F27;
+}
   
   /* Style page content */
   .main {
@@ -141,6 +148,8 @@ body {
       margin-top: -20px;
   }
 
-  #table-container {
-    z-index: 2;
-  }
+
+/* ALLOWS TEXT TO BE CLICKABLE ON TABLE */
+  /* #table-container {
+    z-index: 1;
+  } */
