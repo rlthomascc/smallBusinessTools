@@ -26,7 +26,7 @@ class SideNav extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('/agent')
       .then((res) => {
         this.setState({
