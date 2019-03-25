@@ -7,6 +7,7 @@ import { Route, HashRouter } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import AgentPage from './components/AgentPage';
 
 
 class Routes extends Component {
@@ -23,7 +24,7 @@ class Routes extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/home" exact component={Home} />
-          {agents.map((agent, i) => <Route key={i} path={`/${agent.name.replace(/ /g, '_')}`} component={Home} />)}
+          {agents.map((agent, i) => <Route key={i} path={`/${agent.name.replace(/ /g, '_')}`} component={AgentPage} />)}
         </div>
       </HashRouter>
     );
