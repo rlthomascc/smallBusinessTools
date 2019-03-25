@@ -100,7 +100,6 @@ class Homepage extends Component {
 
   totalTable() {
     const { agents, leads } = this.props;
-    console.log(agents, leads, 'agents leads');
     const totalTransactions = () => agents.reduce((total, trans) => total + trans.transactions, 0);
     const totalGross = () => agents.reduce((total, gross) => total + gross.grossIncome, 0);
     const totalGoals = () => agents.reduce((total, goals) => total + goals.goal, 0);

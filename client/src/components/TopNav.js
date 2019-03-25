@@ -2,6 +2,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/jsx-filename-extension */
 import React, { Component } from 'react';
+import { Redirect, Route, HashRouter } from 'react-router-dom';
 import $ from 'jquery';
 
 class TopNav extends Component {
@@ -21,7 +22,6 @@ class TopNav extends Component {
         token,
       },
       success: (data) => {
-        console.log(data, 'Success');
         this.setState({
           userName: data,
         });
@@ -51,7 +51,7 @@ class TopNav extends Component {
             {userName.username}
           </a>
           <div id="topnav-drop" className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a id="topnav-drop" className="dropdown-item" href="#/home">My Profile</a>
+            <a id="topnav-drop" className="dropdown-item" href="#/admin_page">My Profile</a>
             <a id="topnav-drop" className="dropdown-item" href="#/login" onClick={this.props.logout.bind(this)}>Log Out</a>
           </div>
         </li>

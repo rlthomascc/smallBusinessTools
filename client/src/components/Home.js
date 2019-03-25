@@ -114,20 +114,13 @@ class Home extends Component {
     });
   }
 
-  changeView(e) {
-    console.log(e, 'RENDER VIEW');
-    this.setState({
-      view: e,
-    });
-    // const newPath = e.replace(/ /g, '_');
-    // return <Redirect to={`/${newPath}`} />;
-  }
 
   renderView() {
     const {
       isLoading, token, agents, leads, transactions, view,
     } = this.state;
     const newPath = view.replace(/ /g, '_');
+    console.log(newPath, 'NEW PATH');
     if (isLoading) {
       return (
         <div>
@@ -142,16 +135,19 @@ class Home extends Component {
       if (view === 'Home') {
         return (
           <div id="container-fluid">
-            <SideNav logout={this.logout} changeView={this.changeView.bind(this)} />
-            <TopNav logout={this.logout} token={token} changeView={this.changeView.bind(this)} />
-            <Homepage className="text-center" agents={agents} leads={leads} changeView={this.changeView.bind(this)} />
+            <SideNav logout={this.logout} />
+            <TopNav logout={this.logout} token={token} />
+            <Homepage className="text-center" agents={agents} leads={leads} />
           </div>
         );
       }
     }
     return (
-      // <Redirect to={`/${newPath}`} />
-      <Redirect to="/login" />
+      <div>
+        <SideNav logout={this.logout} />
+        <TopNav logout={this.logout} token={token} />
+        <AgentPage agents={agents} transactions={transactions} leads={leads} />
+      </div>
     );
   }
 
