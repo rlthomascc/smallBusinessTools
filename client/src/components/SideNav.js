@@ -49,6 +49,14 @@ class SideNav extends Component {
   }
 
   setActive(e) {
+    const { changeView } = this.props;
+    this.setState({
+      active: e,
+    });
+    changeView(e);
+  }
+
+  setActiveDrop(e) {
     this.setState({
       active: e,
     });
@@ -95,6 +103,7 @@ class SideNav extends Component {
 
   sideNav() {
     const { active, agents, investment } = this.state;
+    const { changeView } = this.props;
     return (
       <div className="sidenav sidebar-sticky navbar navbar-light rounded-0 border">
 
@@ -108,28 +117,28 @@ class SideNav extends Component {
           </li>
 
           <li className="nav-item dropdown">
-            <a className={`nav-link dropdown-toggle ${active === 'Agents' ? 'text-danger' : 'text-secondary'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('Agents')}>
+            <a className={`nav-link dropdown-toggle ${active === 'Agents' ? 'text-danger' : 'text-secondary'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActiveDrop('Agents')}>
               <FaAddressBook size={20} id="icon" className={active === 'Agents' ? 'text-danger' : 'text-secondary'} />
               {' '}
         Agents
             </a>
             <div className="dropdown-menu bg-light">
-              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
-              {agents.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home">{elem.name}</a>)}
+              <a className="dropdown-item text-secondary" href="#/home" onClick={() => changeView('Agent Overview')}>Overview</a>
+              {agents.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home" onClick={() => changeView(elem.name)}>{elem.name}</a>)}
               {/* <div className="dropdown-divider" />
               <a className="dropdown-item text-secondary" href="#/home">Seperate</a> */}
             </div>
           </li>
 
           <li className="nav-item dropdown">
-            <a className={`nav-link dropdown-toggle ${active === 'InvestmentDrop' ? 'text-danger' : 'text-secondary'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActive('InvestmentDrop')}>
+            <a className={`nav-link dropdown-toggle ${active === 'InvestmentDrop' ? 'text-danger' : 'text-secondary'}`} data-toggle="dropdown" href="#/home" role="button" aria-haspopup="true" aria-expanded="false" onClick={() => this.setActiveDrop('InvestmentDrop')}>
               <FaLandmark size={20} id="icon" className={active === 'InvestmentDrop' ? 'text-danger' : 'text-secondary'} />
               {' '}
         Investments
             </a>
             <div className="dropdown-menu bg-light">
-              <a className="dropdown-item text-secondary" href="#/home">Overview</a>
-              {investment.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home">{elem.company}</a>)}
+              <a className="dropdown-item text-secondary" href="#/home" onClick={() => changeView('Investment Overview')}>Overview</a>
+              {investment.map((elem, i) => <a className="dropdown-item text-secondary" key={i} href="#/home" onClick={() => changeView(elem.company)}>{elem.company}</a>)}
             </div>
           </li>
 

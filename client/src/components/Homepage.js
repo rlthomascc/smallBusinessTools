@@ -4,127 +4,103 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import DashboardChart from '../charts/DashboardChart';
-import AgentPage from './AgentPage';
-import AgentChart from '../charts/AgentChart';
 
 class Homepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      agents: [],
-      leads: [],
       chartData: [],
     };
   }
 
 
   componentWillMount() {
-    Axios.get('/agent')
-      .then((res) => {
-        this.setState({
-          agents: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    Axios.get('/investment')
-      .then((res) => {
-        this.setState({
-          leads: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .then(() => {
-        // const { agents } = this.state;
-        const agents = [
-          { timestamp: 'Jan', transactions: 1 },
-          { timestamp: 'Fed', transactions: 5 },
-          { timestamp: 'Mar', transactions: 2 },
-          { timestamp: 'Apr', transactions: 10 },
-          { timestamp: 'May', transactions: 3 },
-          { timestamp: 'Jun', transactions: 1 },
-          { timestamp: 'Jul', transactions: 12 },
-          { timestamp: 'Aug', transactions: 3 },
-          { timestamp: 'Sep', transactions: 6 },
-          { timestamp: 'Oct', transactions: 2 },
-          { timestamp: 'Nov', transactions: 12 },
-          { timestamp: 'Dec', transactions: 0 },
-        ];
-        let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        let jan = 0;
-        let feb = 0;
-        let mar = 0;
-        let apr = 0;
-        let may = 0;
-        let jun = 0;
-        let jul = 0;
-        let aug = 0;
-        let sep = 0;
-        let oct = 0;
-        let nov = 0;
-        let dec = 0;
-        agents.map((agent) => {
-          if (agent.timestamp.includes('Jan')) {
-            jan += agent.transactions;
-          }
-          if (agent.timestamp.includes('Feb')) {
-            feb += agent.transactions;
-          }
-          if (agent.timestamp.includes('Mar')) {
-            mar += agent.transactions;
-          }
-          if (agent.timestamp.includes('Apr')) {
-            apr += agent.transactions;
-          }
-          if (agent.timestamp.includes('May')) {
-            may += agent.transactions;
-          }
-          if (agent.timestamp.includes('Jun')) {
-            jun += agent.transactions;
-          }
-          if (agent.timestamp.includes('Jul')) {
-            jul += agent.transactions;
-          }
-          if (agent.timestamp.includes('Aug')) {
-            aug += agent.transactions;
-          }
-          if (agent.timestamp.includes('Sep')) {
-            sep += agent.transactions;
-          }
-          if (agent.timestamp.includes('Oct')) {
-            oct += agent.transactions;
-          }
-          if (agent.timestamp.includes('Nov')) {
-            nov += agent.transactions;
-          }
-          if (agent.timestamp.includes('Dec')) {
-            dec += agent.transactions;
-          }
-        });
-        data[0] = jan;
-        data[1] = feb;
-        data[2] = mar;
-        data[3] = apr;
-        data[4] = may;
-        data[5] = jun;
-        data[6] = jul;
-        data[7] = aug;
-        data[8] = sep;
-        data[9] = oct;
-        data[10] = nov;
-        data[11] = dec;
-        this.setState({
-          chartData: data,
-        });
-      });
+    // const { agents } = this.props;
+    const agents = [
+      { timestamp: 'Jan', transactions: 1 },
+      { timestamp: 'Fed', transactions: 5 },
+      { timestamp: 'Mar', transactions: 2 },
+      { timestamp: 'Apr', transactions: 10 },
+      { timestamp: 'May', transactions: 3 },
+      { timestamp: 'Jun', transactions: 1 },
+      { timestamp: 'Jul', transactions: 12 },
+      { timestamp: 'Aug', transactions: 3 },
+      { timestamp: 'Sep', transactions: 6 },
+      { timestamp: 'Oct', transactions: 2 },
+      { timestamp: 'Nov', transactions: 12 },
+      { timestamp: 'Dec', transactions: 0 },
+    ];
+    let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let jan = 0;
+    let feb = 0;
+    let mar = 0;
+    let apr = 0;
+    let may = 0;
+    let jun = 0;
+    let jul = 0;
+    let aug = 0;
+    let sep = 0;
+    let oct = 0;
+    let nov = 0;
+    let dec = 0;
+    agents.map((agent) => {
+      if (agent.timestamp.includes('Jan')) {
+        jan += agent.transactions;
+      }
+      if (agent.timestamp.includes('Feb')) {
+        feb += agent.transactions;
+      }
+      if (agent.timestamp.includes('Mar')) {
+        mar += agent.transactions;
+      }
+      if (agent.timestamp.includes('Apr')) {
+        apr += agent.transactions;
+      }
+      if (agent.timestamp.includes('May')) {
+        may += agent.transactions;
+      }
+      if (agent.timestamp.includes('Jun')) {
+        jun += agent.transactions;
+      }
+      if (agent.timestamp.includes('Jul')) {
+        jul += agent.transactions;
+      }
+      if (agent.timestamp.includes('Aug')) {
+        aug += agent.transactions;
+      }
+      if (agent.timestamp.includes('Sep')) {
+        sep += agent.transactions;
+      }
+      if (agent.timestamp.includes('Oct')) {
+        oct += agent.transactions;
+      }
+      if (agent.timestamp.includes('Nov')) {
+        nov += agent.transactions;
+      }
+      if (agent.timestamp.includes('Dec')) {
+        dec += agent.transactions;
+      }
+    });
+    data[0] = jan;
+    data[1] = feb;
+    data[2] = mar;
+    data[3] = apr;
+    data[4] = may;
+    data[5] = jun;
+    data[6] = jul;
+    data[7] = aug;
+    data[8] = sep;
+    data[9] = oct;
+    data[10] = nov;
+    data[11] = dec;
+    this.setState({
+      chartData: data,
+    });
   }
 
   totalTable() {
-    const { agents, leads } = this.state;
+    const { agents, leads } = this.props;
+    console.log(agents, leads, 'agents leads');
     const totalTransactions = () => agents.reduce((total, trans) => total + trans.transactions, 0);
     const totalGross = () => agents.reduce((total, gross) => total + gross.grossIncome, 0);
     const totalGoals = () => agents.reduce((total, goals) => total + goals.goal, 0);
@@ -157,7 +133,7 @@ class Homepage extends Component {
   }
 
   agentTable() {
-    const { agents } = this.state;
+    const { agents } = this.props;
     return (
       <div id="table-container" className="container">
         <table className="table table-striped border">
@@ -185,7 +161,7 @@ class Homepage extends Component {
   }
 
   leadTable() {
-    const { leads } = this.state;
+    const { leads } = this.props;
     return (
       <div id="table-container" className="container">
         <table className="table table-striped border">

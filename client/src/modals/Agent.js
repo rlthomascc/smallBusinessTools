@@ -15,6 +15,7 @@ class Agent extends Component {
 
 
   fileUploadHandler(e) {
+    const { close } = this.props;
     e.preventDefault();
     const photo = e.target.portrait.files[0];
     const fullName = e.target.fullName.value;
@@ -35,6 +36,7 @@ class Agent extends Component {
       .then((res) => {
         console.log(res);
       });
+    close();
   }
 
   agent() {
@@ -61,7 +63,7 @@ class Agent extends Component {
           <div className="input-group mb-3 col-sm-4">
             <label htmlFor="split">Split</label>
             <div className="input-group-prepend">
-              <input type="number" className="form-control" name="split" placeholder="50" required />
+              <input type="number" step="0.01" className="form-control" name="split" placeholder="50" required />
               <span className="input-group-text" id="split">%</span>
             </div>
           </div>
@@ -69,12 +71,12 @@ class Agent extends Component {
             <label htmlFor="image">Cost Per Year</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="costPerYear">$</span>
-              <input type="number" className="form-control" name="costPerYear" placeholder="30000" />
+              <input type="number" step="0.01" className="form-control" name="costPerYear" placeholder="30000" />
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="goal">Transaction Goal</label>
-            <input type="number" className="form-control" id="goal" name="goal" placeholder="30" />
+            <input type="number" step="0.01" className="form-control" id="goal" name="goal" placeholder="30" />
           </div>
           <div className="form-group">
             <label htmlFor="image">Image</label>
@@ -83,7 +85,7 @@ class Agent extends Component {
           <br />
           <div className="form-group text-center">
             {/* change this.props.close to be moved to another location */}
-            <input className="btn btn-primary btn-block" type="submit" value="Submit" onClick={this.props.close} />
+            <input className="btn btn-primary btn-block" type="submit" value="Submit" />
           </div>
         </form>
       </div>

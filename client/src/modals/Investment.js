@@ -10,6 +10,7 @@ class Investment extends Component {
   }
 
   handleSubmit(e) {
+    const { close } = this.props;
     e.preventDefault();
     const company = e.target.company.value;
     const costPerYear = e.target.costPerYear.value;
@@ -22,6 +23,7 @@ class Investment extends Component {
       .then((res) => {
         console.log(res);
       });
+    close();
   }
 
   investment() {
@@ -36,19 +38,19 @@ class Investment extends Component {
             <label htmlFor="costPerYear">Cost Per Year</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="costPerYear">$</span>
-              <input type="number" className="form-control" name="costPerYear" placeholder="30000" />
+              <input type="number" step="0.01" className="form-control" name="costPerYear" placeholder="30000" />
             </div>
           </div>
           <div className="input-group mb-3 col-sm-4">
             <label htmlFor="costPerMonth">Cost Per Month</label>
             <div className="input-group-prepend">
               <span className="input-group-text" id="costPerMonth">$</span>
-              <input type="number" className="form-control" name="costPerMonth" placeholder="1000" />
+              <input type="number" step="0.01" className="form-control" name="costPerMonth" placeholder="1000" />
             </div>
           </div>
           <br />
           <div className="form-group text-center">
-            <input className="btn btn-primary btn-block" type="submit" value="Submit" onClick={this.props.close} />
+            <input className="btn btn-primary btn-block" type="submit" value="Submit" />
           </div>
         </form>
       </div>
