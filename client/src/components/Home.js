@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -12,7 +13,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import $ from 'jquery';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route, HashRouter } from 'react-router-dom';
 import axios from 'axios';
 import TopNav from './TopNav';
 import SideNav from './SideNav';
@@ -118,12 +119,15 @@ class Home extends Component {
     this.setState({
       view: e,
     });
+    // const newPath = e.replace(/ /g, '_');
+    // return <Redirect to={`/${newPath}`} />;
   }
 
   renderView() {
     const {
       isLoading, token, agents, leads, transactions, view,
     } = this.state;
+    const newPath = view.replace(/ /g, '_');
     if (isLoading) {
       return (
         <div>
@@ -141,12 +145,14 @@ class Home extends Component {
             <SideNav logout={this.logout} changeView={this.changeView.bind(this)} />
             <TopNav logout={this.logout} token={token} changeView={this.changeView.bind(this)} />
             <Homepage className="text-center" agents={agents} leads={leads} changeView={this.changeView.bind(this)} />
-            {/* <AgentPage agents={agents} transactions={transactions} /> */}
           </div>
         );
       }
     }
-    console.log('ERROR');
+    return (
+      // <Redirect to={`/${newPath}`} />
+      <Redirect to="/login" />
+    );
   }
 
   render() {
