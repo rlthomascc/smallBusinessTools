@@ -32,6 +32,7 @@ class Home extends Component {
       agents: [],
       leads: [],
       transactions: [],
+      view: 'Home',
     };
   }
 
@@ -79,7 +80,17 @@ class Home extends Component {
       .catch((err) => {
         console.log(err);
       });
+    axios.get('/investment')
+      .then((res) => {
+        this.setState({
+          leads: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
+
 
   logout() {
     const token = getFromStorage('token');
@@ -102,9 +113,16 @@ class Home extends Component {
     });
   }
 
+  changeView(e) {
+    console.log(e, 'RENDER VIEW');
+    this.setState({
+      view: e,
+    });
+  }
+
   renderView() {
     const {
-      isLoading, token, agents, leads, transactions,
+      isLoading, token, agents, leads, transactions, view,
     } = this.state;
     if (isLoading) {
       return (
@@ -117,14 +135,16 @@ class Home extends Component {
       return <Redirect to="/signup" />;
     }
     if (token) {
-      return (
-        <div id="container-fluid">
-          <SideNav logout={this.logout} />
-          <TopNav logout={this.logout} token={token} />
-          {/* <Homepage className="text-center" /> */}
-          <AgentPage agents={agents} transactions={transactions} />
-        </div>
-      );
+      if (view === 'Home') {
+        return (
+          <div id="container-fluid">
+            <SideNav logout={this.logout} changeView={this.changeView.bind(this)} />
+            <TopNav logout={this.logout} token={token} changeView={this.changeView.bind(this)} />
+            <Homepage className="text-center" agents={agents} leads={leads} changeView={this.changeView.bind(this)} />
+            {/* <AgentPage agents={agents} transactions={transactions} /> */}
+          </div>
+        );
+      }
     }
     console.log('ERROR');
   }
