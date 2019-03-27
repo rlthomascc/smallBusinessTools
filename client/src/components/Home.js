@@ -124,6 +124,7 @@ class Home extends Component {
     if (isLoading) {
       return (
         <div>
+          {/* //ADD A LOADING GIF HERE */}
           <p>Loading...</p>
         </div>
       );
