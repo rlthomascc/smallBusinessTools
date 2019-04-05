@@ -36,7 +36,6 @@ class App extends Component {
   render() {
     const { routes } = this.state;
     return (
-      // routes
       <Routes agents={routes} />
     );
   }
