@@ -12,6 +12,8 @@ import Axios from 'axios';
 import Routes from './Routes';
 import Login from './components/login';
 
+// IMPLEMENT SSR ON THIS ENTIRE PROJECT!!!
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +38,7 @@ class App extends Component {
   render() {
     const { routes } = this.state;
     return (
+
       <Routes agents={routes} />
     );
   }
