@@ -13,12 +13,12 @@ import Routes from './Routes';
 import Login from './components/login';
 
 // IMPLEMENT SSR ON THIS ENTIRE PROJECT!!!
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       routes: [],
+      
     };
   }
 
