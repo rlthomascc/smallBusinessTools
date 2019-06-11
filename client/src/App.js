@@ -21,7 +21,6 @@ class App extends Component {
     };
   }
 
-  
   componentWillMount() {
     Axios.get('/agent')
       .then((res) => {
